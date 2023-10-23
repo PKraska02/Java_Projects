@@ -37,7 +37,8 @@ public class Kontroler_Statystyki_Spotify {
                 System.out.println("Button Clicked!!");
                 try {
                     List<Model_Statystyki_Spotify> temp = model.readFile(filePath2);
-                    Model_Statystyki_Spotify.generateReport(temp, filePath, region);
+                    List<Model_Statystyki_Spotify> temp2 = theModel.setStatSpotify(region, temp);
+                    theModel.generateReport(temp2, filePath, region);
 
                 } catch (IOException ex) {
                     ex.printStackTrace();

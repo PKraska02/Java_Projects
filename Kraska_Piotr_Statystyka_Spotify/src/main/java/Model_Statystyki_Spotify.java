@@ -89,7 +89,7 @@ public class Model_Statystyki_Spotify {
         int maxPlays = 0;
         for (Map.Entry<String, Integer> entry : artistPlaysCount.entrySet()) {
             if (entry.getValue() > maxPlays) {
-                popularArtists.clear(); // Wyczyść listę, jeśli znaleziono artystę z większą ilością odsłuchań
+                popularArtists.clear(); 
                 maxPlays = entry.getValue();
             }
 
@@ -356,7 +356,7 @@ public class Model_Statystyki_Spotify {
 }
     
     
-    public static void generateReport(List<Model_Statystyki_Spotify> spotifystatslist, String fl, String reg) throws IOException {
+    public void generateReport(List<Model_Statystyki_Spotify> spotifystatslist, String fl, String reg) throws IOException {
         try (BufferedWriter savefile = new BufferedWriter(new FileWriter(fl))) {
             savefile.write("Report from " + reg + "\n\n");
 
@@ -572,6 +572,19 @@ public class Model_Statystyki_Spotify {
                         + " " + stats.getContinent() + " " + stats.getPlaysCount() + " " + stats.getSongTime() + "\n");
             }
         }
+    }
+    public List<Model_Statystyki_Spotify> setStatSpotify(String reg,List<Model_Statystyki_Spotify> list){
+        
+        List<Model_Statystyki_Spotify> substatspotifylist = new ArrayList<>();
+        for (Model_Statystyki_Spotify stats : list) {
+            String continent = stats.getContinent();
+
+        if (continent.equals(reg)) {
+            substatspotifylist.add(stats);
+        }
+    }
+
+        return substatspotifylist;
     }
     
     
