@@ -1,3 +1,10 @@
+package Main;
+
+
+import Controller_package.Kontroler_Statystyki_Spotify;
+import Model_package.Model_Statystyki_Spotify;
+import View_package.Widok_Statystyki_Spotify;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */

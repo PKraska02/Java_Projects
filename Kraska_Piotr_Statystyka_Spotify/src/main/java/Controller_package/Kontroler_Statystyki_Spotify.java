@@ -1,7 +1,11 @@
+package Controller_package;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+import Model_package.Model_Statystyki_Spotify;
+import View_package.Widok_Statystyki_Spotify;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,6 +27,7 @@ public class Kontroler_Statystyki_Spotify {
     String filePath = "";
     String filePath2 = "C:/Users/Piotr/source/repos/10266093-gr21-repo/Projekt/Projekt_Zaliczeniowy_Spotify/SpotifyStatsDatabase.txt";
     String region = "";
+    //C:\Users\Piotr\source\repos\10266093-gr21-repo\Projekt\Projekt_Zaliczeniowy_Spotify
     
     public void Statystyki_Spotify_Kontroler(Widok_Statystyki_Spotify theView, Model_Statystyki_Spotify theModel){
         this.view=theView;

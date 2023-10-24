@@ -1,3 +1,5 @@
+package Model_package;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -7,16 +9,16 @@
  *
  * @author Piotr
  */
-public class StringDoublePair {
-    private String key;
+public class IntegerDoublePair {
+    private Integer key;
     private Double value;
 
-    public StringDoublePair(String key, Double value) {
+    public IntegerDoublePair(Integer key, Double value) {
         this.key = key;
         this.value = value;
     }
 
-    public String getKey() {
+    public Integer getKey() {
         return key;
     }
 
