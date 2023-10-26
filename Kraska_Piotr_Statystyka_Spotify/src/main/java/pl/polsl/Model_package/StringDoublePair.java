@@ -1,4 +1,4 @@
-package Model_package;
+package pl.polsl.Model_package;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

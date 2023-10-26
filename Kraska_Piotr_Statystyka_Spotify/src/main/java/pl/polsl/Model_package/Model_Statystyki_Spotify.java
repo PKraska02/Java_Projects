@@ -1,4 +1,4 @@
-package Model_package;
+package pl.polsl.Model_package;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -37,7 +37,7 @@ public class Model_Statystyki_Spotify {
     private int playsCount = 0;
     private double songTime = 0;
     
-    public static List<Model_Statystyki_Spotify> readFile(String filePath) throws FileNotFoundException {
+    public List<Model_Statystyki_Spotify> readFile(String filePath) throws FileNotFoundException {
         List<Model_Statystyki_Spotify> spotifyStatsList = new ArrayList<>();
 
         try  {
@@ -66,7 +66,7 @@ public class Model_Statystyki_Spotify {
         return spotifyStatsList;
     }
     
-    public static void saveDataToFile(List<Model_Statystyki_Spotify> spotifystatslist, String filePath) {
+    public void saveDataToFile(List<Model_Statystyki_Spotify> spotifystatslist, String filePath) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (Model_Statystyki_Spotify stats : spotifystatslist) {
                 writer.write(stats.getAuthorName() + " " + stats.getAuthorLastName() + " " + stats.getTitle() + " " + stats.getContinent() + " " + stats.getPlaysCount() + " " + stats.getSongTime());
@@ -77,15 +77,15 @@ public class Model_Statystyki_Spotify {
         }
     }
     
-    public static List<Map.Entry<String, Integer>> mostPopularArtist(List<Model_Statystyki_Spotify> spotifystatslist) {
+    public List<Map.Entry<String, Integer>> mostPopularArtist(List<Model_Statystyki_Spotify> spotifystatslist) {
         List<Map.Entry<String, Integer>> popularArtists = new ArrayList<>();
         Map<String, Integer> artistPlaysCount = new HashMap<>();
 
         for (Model_Statystyki_Spotify stats : spotifystatslist) {
             String artist = stats.getAuthorName() + " " + stats.getAuthorLastName();
-            int playsCount = stats.getPlaysCount();
+            int playsCounts = stats.getPlaysCount();
 
-            artistPlaysCount.put(artist, artistPlaysCount.getOrDefault(artist, 0) + playsCount);
+            artistPlaysCount.put(artist, artistPlaysCount.getOrDefault(artist, 0) + playsCounts);
         }
 
         int maxPlays = 0;
@@ -103,15 +103,15 @@ public class Model_Statystyki_Spotify {
         return popularArtists;
     }
     
-        public static List<Map.Entry<String, Integer>> leastPopularArtist(List<Model_Statystyki_Spotify> spotifystatslist) {
+        public List<Map.Entry<String, Integer>> leastPopularArtist(List<Model_Statystyki_Spotify> spotifystatslist) {
         List<Map.Entry<String, Integer>> leastPopularArtists = new ArrayList<>();
         Map<String, Integer> artistPlaysCount = new HashMap<>();
 
         for (Model_Statystyki_Spotify stats : spotifystatslist) {
             String artist = stats.getAuthorName() + " " + stats.getAuthorLastName();
-            int playsCount = stats.getPlaysCount();
+            int playsCounts = stats.getPlaysCount();
 
-            artistPlaysCount.put(artist, artistPlaysCount.getOrDefault(artist, 0) + playsCount);
+            artistPlaysCount.put(artist, artistPlaysCount.getOrDefault(artist, 0) + playsCounts);
         }
 
         int minPlays = Integer.MAX_VALUE; // Ustaw wartość początkową na maksymalną wartość int
@@ -129,7 +129,7 @@ public class Model_Statystyki_Spotify {
         return leastPopularArtists;
     }
         
-    public static List<Model_Statystyki_Spotify> mostPopularSong(List<Model_Statystyki_Spotify> spotifystatslist) {
+    public List<Model_Statystyki_Spotify> mostPopularSong(List<Model_Statystyki_Spotify> spotifystatslist) {
         List<Model_Statystyki_Spotify> popularSongs = new ArrayList<>();
         int maxPlays = 0;
 
@@ -202,7 +202,7 @@ public class Model_Statystyki_Spotify {
     }
     
     
-    public static double spearmanKorelation(List<Model_Statystyki_Spotify> spotifystatslist) {
+    public double spearmanKorelation(List<Model_Statystyki_Spotify> spotifystatslist) {
     List<StringDoublePair> xRegion = new ArrayList<>();
     List<IntegerDoublePair> yPlaysCount = new ArrayList<>();
     double RangX = 0;
@@ -579,9 +579,7 @@ public class Model_Statystyki_Spotify {
         
         List<Model_Statystyki_Spotify> substatspotifylist = new ArrayList<>();
         for (Model_Statystyki_Spotify stats : list) {
-            String continent = stats.getContinent();
-
-        if (continent.equals(reg)) {
+        if (stats.getContinent().trim().equals(reg.trim())) {
             substatspotifylist.add(stats);
         }
     }
