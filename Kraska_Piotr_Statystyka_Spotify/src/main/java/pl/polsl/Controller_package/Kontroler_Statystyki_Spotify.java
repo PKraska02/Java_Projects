@@ -6,13 +6,9 @@ package pl.polsl.Controller_package;
  */
 import pl.polsl.Model_package.Model_Statystyki_Spotify;
 import pl.polsl.View_package.View_Statystyki_Spotify;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import pl.polsl.View_package.Show_Report;
 import java.io.IOException;
 import java.util.List;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Map;
 /**
@@ -20,8 +16,9 @@ import java.util.Map;
  * @author Piotr
  */
 public class Kontroler_Statystyki_Spotify {
-    private Model_Statystyki_Spotify model = new Model_Statystyki_Spotify();
-    private View_Statystyki_Spotify view;
+    private final Model_Statystyki_Spotify model = new Model_Statystyki_Spotify();
+    private final View_Statystyki_Spotify view;
+    private final Show_Report report;
     boolean isregioncheck = false;
     String filePath = "C:/Users/Piotr/source/repos/Java_Projects/Kraska_Piotr_Statystyka_Spotify/test.txt";
     String filePath2 = "C:/Users/Piotr/source/repos/Java_Projects/Kraska_Piotr_Statystyka_Spotify/SpotifyStatsDatabase.txt";
@@ -29,6 +26,7 @@ public class Kontroler_Statystyki_Spotify {
     //C:\Users\Piotr\source\repos\10266093-gr21-repo\Projekt\Projekt_Zaliczeniowy_Spotify
     public Kontroler_Statystyki_Spotify() {
         this.view = new View_Statystyki_Spotify(this);
+        this.report = new Show_Report();
         this.view.setVisible(true);
     }
 
@@ -89,6 +87,73 @@ public class Kontroler_Statystyki_Spotify {
     public void setRegion(String s){
         this.region = s;
         this.isregioncheck = true;
+    }
+     public String showMostSong() {
+        List<Model_Statystyki_Spotify> mpSong = null; // Zadeklaruj zmienną na poziomie metody
+        StringBuilder result = new StringBuilder();
+
+        try {
+            List<Model_Statystyki_Spotify> temp = this.model.readFile(filePath2);
+            System.out.println(region);
+            List<Model_Statystyki_Spotify> temp2 = this.model.setStatSpotify(region, temp);
+            mpSong = this.model.mostPopularSong(temp2);
+            for (Model_Statystyki_Spotify entry : mpSong) {
+                result.append("Author: ").append(entry.getAuthorName()).append(entry.getAuthorLastName())
+                .append("  Number of Listens: ").append(entry.getPlaysCount())
+                .append("\n");
+                System.out.println(result);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+
+        return result.toString();
+    }
+    public String showLeastSong() {
+        List<Model_Statystyki_Spotify> lpArtist = null; // Zadeklaruj zmienną na poziomie metody
+        StringBuilder result = new StringBuilder();
+
+        try {
+            List<Model_Statystyki_Spotify> temp = this.model.readFile(filePath2);
+            System.out.println(region);
+            List<Model_Statystyki_Spotify> temp2 = this.model.setStatSpotify(region, temp);
+            lpArtist = this.model.leastPopularSong(temp2);
+            for (Model_Statystyki_Spotify entry : lpArtist) {
+                result.append("Author: ").append(entry.getAuthorName()).append(entry.getAuthorLastName())
+                .append("  Number of Listens: ").append(entry.getPlaysCount())
+                .append("\n");
+                System.out.println(result);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+
+        return result.toString();
+    }
+    public double showSpearmanKorelation(){
+        double result = 0;
+        try {
+            List<Model_Statystyki_Spotify> temp = this.model.readFile(filePath2);
+            System.out.println(region);
+            List<Model_Statystyki_Spotify> temp2 = this.model.setStatSpotify(region, temp);
+            result = this.model.spearmanKorelation(temp2);
+            }
+        catch (FileNotFoundException e) {
+            System.out.println(e);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+
+        return result;
+    }
+    public void show_Report(){
+        this.report.setVisible(true);
+        this.report.displayFileContents(filePath);
+        
     }
 
 } 

@@ -148,7 +148,7 @@ public class Model_Statystyki_Spotify {
         return popularSongs;
     }
     
-    public static List<Model_Statystyki_Spotify> leastPopularSong(List<Model_Statystyki_Spotify> spotifystatslist) {
+    public List<Model_Statystyki_Spotify> leastPopularSong(List<Model_Statystyki_Spotify> spotifystatslist) {
         List<Model_Statystyki_Spotify> leastPopularSongs = new ArrayList<>();
         int minPlays = Integer.MAX_VALUE;
         boolean isFirst = true;
@@ -173,7 +173,7 @@ public class Model_Statystyki_Spotify {
         return leastPopularSongs;
     }
     
-    public static List<Model_Statystyki_Spotify> artistSorter(List<Model_Statystyki_Spotify> spotifystatslist) {
+    public List<Model_Statystyki_Spotify> artistSorter(List<Model_Statystyki_Spotify> spotifystatslist) {
         List<Model_Statystyki_Spotify> sortedList = new ArrayList<>(spotifystatslist);
 
         Collections.sort(sortedList, new Comparator<Model_Statystyki_Spotify>() {
@@ -186,7 +186,7 @@ public class Model_Statystyki_Spotify {
         return sortedList;
     }
     
-    public static int arithmeticMeanOfListens(List<Model_Statystyki_Spotify> spotifystatslist) {
+    public int arithmeticMeanOfListens(List<Model_Statystyki_Spotify> spotifystatslist) {
         int sum = 0;
 
         for (Model_Statystyki_Spotify stats : spotifystatslist) {
@@ -579,10 +579,15 @@ public class Model_Statystyki_Spotify {
         
         List<Model_Statystyki_Spotify> substatspotifylist = new ArrayList<>();
         for (Model_Statystyki_Spotify stats : list) {
-        if (stats.getContinent().trim().equals(reg.trim())) {
-            substatspotifylist.add(stats);
+            if (stats.getContinent().trim().equals(reg.trim())) {
+                substatspotifylist.add(stats);
+            }
         }
-    }
+        if(reg.trim().equals("WorldWide")){
+            for (Model_Statystyki_Spotify stats : list) {
+                 substatspotifylist.add(stats);
+            }
+        }
 
         return substatspotifylist;
     }
