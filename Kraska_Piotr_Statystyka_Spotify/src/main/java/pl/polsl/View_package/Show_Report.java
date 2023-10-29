@@ -7,8 +7,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 /**
- *
+ * A view for displaying reports.
  * @author Piotr
+ * @version 1.0
  */
 public class Show_Report extends javax.swing.JFrame {
 
@@ -70,12 +71,21 @@ public class Show_Report extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+    * Handles the action when the "Close" button is clicked.
+    *
+    * @param evt The ActionEvent object representing the event.
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("");
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+    /**
+    * Displays the contents of a text file in a JTextArea.
+    *
+    * @param filePath The path to the text file to be displayed.
+    */
     public void displayFileContents(String filePath) {
         String line;
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {

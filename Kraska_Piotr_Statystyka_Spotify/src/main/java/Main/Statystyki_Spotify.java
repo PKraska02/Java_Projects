@@ -1,21 +1,25 @@
 package Main;
 
 
-import pl.polsl.Controller_package.Kontroler_Statystyki_Spotify;
-import pl.polsl.Model_package.Model_Statystyki_Spotify;
-import pl.polsl.View_package.View_Statystyki_Spotify;
+import pl.polsl.Controller_package.ControllerStatisticsSpotify;
+import pl.polsl.Model_package.ModelStatisticsSpotify;
+import pl.polsl.View_package.ViewStatisticsSpotify;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 
 
 /**
+ * This class represents the main entry point for the Spotify statistics application.
  *
  * @author Piotr
  */
 public class Statystyki_Spotify {
-
+    /**
+     * The main method that initializes and starts the application.
+     * This class represents the main entry point for the Spotify statistics application.
+     * 
+     */
     public static void main(String[] args) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -36,9 +40,9 @@ public class Statystyki_Spotify {
       javax.swing.SwingUtilities.invokeLater(new Runnable() {
       @Override
       public void run() {
-        Model_Statystyki_Spotify Spotify_Model = new Model_Statystyki_Spotify();
-        Kontroler_Statystyki_Spotify Spotify_Controller = new Kontroler_Statystyki_Spotify();
-        View_Statystyki_Spotify Spotify_View = new View_Statystyki_Spotify(Spotify_Controller);
+        ModelStatisticsSpotify Spotify_Model = new ModelStatisticsSpotify();
+        ControllerStatisticsSpotify Spotify_Controller = new ControllerStatisticsSpotify();
+        ViewStatisticsSpotify Spotify_View = new ViewStatisticsSpotify(Spotify_Controller);
         }
         });
     }

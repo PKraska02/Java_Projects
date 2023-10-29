@@ -19,26 +19,49 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- *
+ * This class represents the data model for Spotify statistics.
+ * It contains methods to read and process statistics data.
  * @author Piotr
+ * @version 1.0
  */
-/**
- * Opis Klasy Model_Statystyki_Spotify
- */
-public class Model_Statystyki_Spotify {
+public class ModelStatisticsSpotify {
     /**
-     * Imie autora
-     * @param authorName - Imie autora
+     * The name of the author.
      */
     private String authorName;
+
+    /**
+     * The last name of the author.
+     */
     private String authorLastName;
+    /**
+     * The title of the song.
+     */
     private String title;
+    /**
+     * The continent where the author has their listeners.
+     */
     private String continent;
+    /**
+     * Value of listens 
+     * @param playsCount
+     */
     private int playsCount = 0;
+    /**
+     * The number of listens for the song.
+     */
     private double songTime = 0;
-    
-    public List<Model_Statystyki_Spotify> readFile(String filePath) throws FileNotFoundException {
-        List<Model_Statystyki_Spotify> spotifyStatsList = new ArrayList<>();
+    /**
+    * Reads the contents of a file and populates a List of Spotify statistics.
+    *
+    * This method reads the contents of a file specified by the filePath and populates a List with Spotify statistics.
+    *
+    * @param filePath The path to the file from which data will be read.
+    * @return A List of Spotify statistics (ModelStatisticsSpotify).
+    * @throws FileNotFoundException If the specified file is not found.
+    */
+    public List<ModelStatisticsSpotify> readFile(String filePath) throws FileNotFoundException {
+        List<ModelStatisticsSpotify> spotifyStatsList = new ArrayList<>();
 
         try  {
             Scanner scanner = new Scanner (new File(filePath));
@@ -47,7 +70,7 @@ public class Model_Statystyki_Spotify {
                 String[] data = line.split(" "); 
 
                 if (data.length == 6) {
-                    Model_Statystyki_Spotify spotifyStats = new Model_Statystyki_Spotify();
+                    ModelStatisticsSpotify spotifyStats = new ModelStatisticsSpotify();
                     spotifyStats.setAuthorName(data[0]);
                     spotifyStats.setAuthorLastName(data[1]);
                     spotifyStats.setTitle(data[2]);
@@ -65,23 +88,37 @@ public class Model_Statystyki_Spotify {
 
         return spotifyStatsList;
     }
-    
-    public void saveDataToFile(List<Model_Statystyki_Spotify> spotifystatslist, String filePath) {
+    /**
+     * Saves data to a specified file path.
+     *
+     * This method takes a list of Spotify statistics and saves the data to a file located at the given file path.
+     *
+     * @param spotifystatslist A list of Spotify statistics to be saved.
+     * @param filePath The path where the data will be stored.
+     */
+    public void saveDataToFile(List<ModelStatisticsSpotify> spotifystatslist, String filePath) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            for (Model_Statystyki_Spotify stats : spotifystatslist) {
+            for (ModelStatisticsSpotify stats : spotifystatslist) {
                 writer.write(stats.getAuthorName() + " " + stats.getAuthorLastName() + " " + stats.getTitle() + " " + stats.getContinent() + " " + stats.getPlaysCount() + " " + stats.getSongTime());
-                writer.newLine(); // Nowa linia po każdym zapisie
+                writer.newLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    public List<Map.Entry<String, Integer>> mostPopularArtist(List<Model_Statystyki_Spotify> spotifystatslist) {
+    /**
+     * Finds the most popular artist(s) based on Spotify statistics.
+     *
+     * This method analyzes a list of Spotify statistics and identifies the artist(s) with the most plays.
+     *
+     * @param spotifystatslist A list of Spotify statistics to analyze.
+     * @return A list of `Map.Entry` containing the artist's name (as a string) and their total plays count.
+     */
+    public List<Map.Entry<String, Integer>> mostPopularArtist(List<ModelStatisticsSpotify> spotifystatslist) {
         List<Map.Entry<String, Integer>> popularArtists = new ArrayList<>();
         Map<String, Integer> artistPlaysCount = new HashMap<>();
 
-        for (Model_Statystyki_Spotify stats : spotifystatslist) {
+        for (ModelStatisticsSpotify stats : spotifystatslist) {
             String artist = stats.getAuthorName() + " " + stats.getAuthorLastName();
             int playsCounts = stats.getPlaysCount();
 
@@ -102,22 +139,29 @@ public class Model_Statystyki_Spotify {
 
         return popularArtists;
     }
-    
-        public List<Map.Entry<String, Integer>> leastPopularArtist(List<Model_Statystyki_Spotify> spotifystatslist) {
+        /**
+        * Finds the least popular artist(s) based on Spotify statistics.
+        *
+        * This method analyzes a list of Spotify statistics and identifies the artist(s) with the fewest plays.
+        *
+        * @param spotifystatslist A list of Spotify statistics to analyze.
+        * @return A list of `Map.Entry` containing the artist's name (as a string) and their total plays count.
+        */
+        public List<Map.Entry<String, Integer>> leastPopularArtist(List<ModelStatisticsSpotify> spotifystatslist) {
         List<Map.Entry<String, Integer>> leastPopularArtists = new ArrayList<>();
         Map<String, Integer> artistPlaysCount = new HashMap<>();
 
-        for (Model_Statystyki_Spotify stats : spotifystatslist) {
+        for (ModelStatisticsSpotify stats : spotifystatslist) {
             String artist = stats.getAuthorName() + " " + stats.getAuthorLastName();
             int playsCounts = stats.getPlaysCount();
 
             artistPlaysCount.put(artist, artistPlaysCount.getOrDefault(artist, 0) + playsCounts);
         }
 
-        int minPlays = Integer.MAX_VALUE; // Ustaw wartość początkową na maksymalną wartość int
+        int minPlays = Integer.MAX_VALUE; 
         for (Map.Entry<String, Integer> entry : artistPlaysCount.entrySet()) {
             if (entry.getValue() < minPlays) {
-                leastPopularArtists.clear(); // Wyczyść listę, jeśli znaleziono artystę z mniejszą ilością odsłuchań
+                leastPopularArtists.clear(); 
                 minPlays = entry.getValue();
             }
 
@@ -128,18 +172,25 @@ public class Model_Statystyki_Spotify {
 
         return leastPopularArtists;
     }
-        
-    public List<Model_Statystyki_Spotify> mostPopularSong(List<Model_Statystyki_Spotify> spotifystatslist) {
-        List<Model_Statystyki_Spotify> popularSongs = new ArrayList<>();
+     /**
+     * Finds the most popular song(s) from a list of Spotify statistics.
+     *
+     * This method analyzes a list of Spotify statistics and identifies the song(s) with the highest number of plays.
+     *
+     * @param spotifystatslist A list of Spotify statistics to analyze.
+     * @return A list of Spotify statistics representing the most popular song(s).
+     */
+    public List<ModelStatisticsSpotify> mostPopularSong(List<ModelStatisticsSpotify> spotifystatslist) {
+        List<ModelStatisticsSpotify> popularSongs = new ArrayList<>();
         int maxPlays = 0;
 
-        for (Model_Statystyki_Spotify stats : spotifystatslist) {
+        for (ModelStatisticsSpotify stats : spotifystatslist) {
             if (stats.getPlaysCount() > maxPlays) {
                 maxPlays = stats.getPlaysCount();
             }
         }
 
-        for (Model_Statystyki_Spotify stats : spotifystatslist) {
+        for (ModelStatisticsSpotify stats : spotifystatslist) {
             if (stats.getPlaysCount() == maxPlays) {
                 popularSongs.add(stats);
             }
@@ -147,13 +198,18 @@ public class Model_Statystyki_Spotify {
 
         return popularSongs;
     }
-    
-    public List<Model_Statystyki_Spotify> leastPopularSong(List<Model_Statystyki_Spotify> spotifystatslist) {
-        List<Model_Statystyki_Spotify> leastPopularSongs = new ArrayList<>();
+    /**
+    * This method finds the least popular songs based on the number of plays.
+    *
+    * @param spotifystatslist A list of Spotify statistics for songs.
+    * @return A list of the least popular songs.
+    */
+    public List<ModelStatisticsSpotify> leastPopularSong(List<ModelStatisticsSpotify> spotifystatslist) {
+        List<ModelStatisticsSpotify> leastPopularSongs = new ArrayList<>();
         int minPlays = Integer.MAX_VALUE;
         boolean isFirst = true;
 
-        for (Model_Statystyki_Spotify stats : spotifystatslist) {
+        for (ModelStatisticsSpotify stats : spotifystatslist) {
             if (isFirst) {
                 minPlays = stats.getPlaysCount();
                 isFirst = false;
@@ -164,7 +220,7 @@ public class Model_Statystyki_Spotify {
             }
         }
 
-        for (Model_Statystyki_Spotify stats : spotifystatslist) {
+        for (ModelStatisticsSpotify stats : spotifystatslist) {
             if (stats.getPlaysCount() == minPlays) {
                 leastPopularSongs.add(stats);
             }
@@ -172,37 +228,52 @@ public class Model_Statystyki_Spotify {
 
         return leastPopularSongs;
     }
-    
-    public List<Model_Statystyki_Spotify> artistSorter(List<Model_Statystyki_Spotify> spotifystatslist) {
-        List<Model_Statystyki_Spotify> sortedList = new ArrayList<>(spotifystatslist);
+    /**
+    * Sorts a list of Spotify statistics based on the number of plays in descending order.
+    *
+    * @param spotifystatslist A list of Spotify statistics for songs.
+    * @return A sorted list of Spotify statistics with the most-played songs first.
+    */
+    public List<ModelStatisticsSpotify> artistSorter(List<ModelStatisticsSpotify> spotifystatslist) {
+        List<ModelStatisticsSpotify> sortedList = new ArrayList<>(spotifystatslist);
 
-        Collections.sort(sortedList, new Comparator<Model_Statystyki_Spotify>() {
+        Collections.sort(sortedList, new Comparator<ModelStatisticsSpotify>() {
             @Override
-            public int compare(Model_Statystyki_Spotify x, Model_Statystyki_Spotify y) {
+            public int compare(ModelStatisticsSpotify x, ModelStatisticsSpotify y) {
                 return Integer.compare(y.getPlaysCount(), x.getPlaysCount());
             }
         });
 
         return sortedList;
     }
-    
-    public int arithmeticMeanOfListens(List<Model_Statystyki_Spotify> spotifystatslist) {
+    /**
+    * Calculates the arithmetic mean (average) of the number of listens in a list of Spotify statistics.
+    *
+    * @param spotifystatslist A list of Spotify statistics for songs.
+    * @return The arithmetic mean of the number of listens in the provided list.
+    */
+    public int arithmeticMeanOfListens(List<ModelStatisticsSpotify> spotifystatslist) {
         int sum = 0;
 
-        for (Model_Statystyki_Spotify stats : spotifystatslist) {
+        for (ModelStatisticsSpotify stats : spotifystatslist) {
             sum += stats.getPlaysCount();
         }
 
         if (spotifystatslist.isEmpty()) {
-            return 0; // Zabezpieczenie przed dzieleniem przez zero
+            return 0; 
         }
 
         int value = sum / spotifystatslist.size();
         return value;
     }
     
-    
-    public double spearmanKorelation(List<Model_Statystyki_Spotify> spotifystatslist) {
+    /**
+    * Calculates the Spearman's rank correlation coefficient between the regions and the number of plays for songs.
+    *
+    * @param spotifystatslist A list of Spotify statistics for songs.
+    * @return The Spearman's rank correlation coefficient.
+    */
+    public double spearmanKorelation(List<ModelStatisticsSpotify> spotifystatslist) {
     List<StringDoublePair> xRegion = new ArrayList<>();
     List<IntegerDoublePair> yPlaysCount = new ArrayList<>();
     double RangX = 0;
@@ -217,27 +288,27 @@ public class Model_Statystyki_Spotify {
     int AFCount = 0;
     int count = 0;
 
-    for (Model_Statystyki_Spotify stats : spotifystatslist) {
+    for (ModelStatisticsSpotify stats : spotifystatslist) {
         xRegion.add(new StringDoublePair(stats.getContinent(), 0.0));
         yPlaysCount.add(new IntegerDoublePair(stats.getPlaysCount(), 0.0));
     }
      // Find value of duplicates of regions
-    for (Model_Statystyki_Spotify stats : spotifystatslist) {
+    for (ModelStatisticsSpotify stats : spotifystatslist) {
         if (EURegName.equals(stats.getContinent())) {
             EUCount++;
         }
     }
-    for (Model_Statystyki_Spotify stats : spotifystatslist) {
+    for (ModelStatisticsSpotify stats : spotifystatslist) {
         if (NARegName.equals(stats.getContinent())) {
             NACount++;
         }
     }
-    for (Model_Statystyki_Spotify stats : spotifystatslist) {
+    for (ModelStatisticsSpotify stats : spotifystatslist) {
         if (ASRegName.equals(stats.getContinent())) {
             ASCount++;
         }
     }
-    for (Model_Statystyki_Spotify stats : spotifystatslist) {
+    for (ModelStatisticsSpotify stats : spotifystatslist) {
         if (AFRegName.equals(stats.getContinent())) {
             AFCount++;
         }
@@ -357,17 +428,24 @@ public class Model_Statystyki_Spotify {
     return ri;
 }
     
-    
-    public void generateReport(List<Model_Statystyki_Spotify> spotifystatslist, String fl, String reg) throws IOException {
+    /**
+    * Generates a report of Spotify statistics and saves it to a file.
+    *
+    * @param spotifystatslist A list of Spotify statistics for songs.
+    * @param fl The file path where the report will be saved.
+    * @param reg The region for which the report is generated.
+    * @throws IOException If an error occurs while writing the report to the file.
+    */
+    public void generateReport(List<ModelStatisticsSpotify> spotifystatslist, String fl, String reg) throws IOException {
         try (BufferedWriter savefile = new BufferedWriter(new FileWriter(fl))) {
             savefile.write("Report from " + reg + "\n\n");
 
-            List<Model_Statystyki_Spotify> v_mls = mostPopularSong(spotifystatslist);
-            List<Model_Statystyki_Spotify> v_lps = leastPopularSong(spotifystatslist);
+            List<ModelStatisticsSpotify> v_mls = mostPopularSong(spotifystatslist);
+            List<ModelStatisticsSpotify> v_lps = leastPopularSong(spotifystatslist);
             List<Map.Entry<String, Integer>> v_buf = mostPopularArtist(spotifystatslist);
             List<Map.Entry<String, Integer>> v_buf2 = leastPopularArtist(spotifystatslist);
             double x = spearmanKorelation(spotifystatslist);
-            List<Model_Statystyki_Spotify> list_buf = new ArrayList<>();
+            List<ModelStatisticsSpotify> list_buf = new ArrayList<>();
 
             if (!reg.equals("WorldWide")) {
                 savefile.write("Author/s with the most listens: \n");
@@ -381,13 +459,13 @@ public class Model_Statystyki_Spotify {
                 }
 
                 savefile.write("\nSong with most listens: \n");
-                for (Model_Statystyki_Spotify stats : v_mls) {
+                for (ModelStatisticsSpotify stats : v_mls) {
                     savefile.write("Author: " + stats.getAuthorName() + " " + stats.getAuthorLastName()
                             + "  Number of listens: " + stats.getPlaysCount() + " Region: " + stats.getContinent() + "\n");
                 }
 
                 savefile.write("\nSong with least listens: \n");
-                for (Model_Statystyki_Spotify stats : v_lps) {
+                for (ModelStatisticsSpotify stats : v_lps) {
                     savefile.write("Author: " + stats.getAuthorName() + " " + stats.getAuthorLastName()
                             + "  Number of listens: " + stats.getPlaysCount() + " Region: " + stats.getContinent() + "\n");
                 }
@@ -405,20 +483,20 @@ public class Model_Statystyki_Spotify {
                 }
 
                 savefile.write("\nSong with most listens: \n");
-                for (Model_Statystyki_Spotify stats : v_mls) {
+                for (ModelStatisticsSpotify stats : v_mls) {
                     savefile.write("Author: " + stats.getAuthorName() + " " + stats.getAuthorLastName()
                             + "  Number of listens: " + stats.getPlaysCount() + " Region: " + stats.getContinent() + "\n");
                 }
 
                 savefile.write("\nSong with least listens: \n");
-                for (Model_Statystyki_Spotify stats : v_lps) {
+                for (ModelStatisticsSpotify stats : v_lps) {
                     savefile.write("Author: " + stats.getAuthorName() + " " + stats.getAuthorLastName()
                             + "  Number of listens: " + stats.getPlaysCount() + " Region: " + stats.getContinent() + "\n");
                 }
 
                 // EU
                 savefile.write("Author/s with the most listens in EU: \n");
-                for (Model_Statystyki_Spotify stats : spotifystatslist) {
+                for (ModelStatisticsSpotify stats : spotifystatslist) {
                     if ("EU".equals(stats.getContinent())) {
                         list_buf.add(stats);
                     }
@@ -440,13 +518,13 @@ public class Model_Statystyki_Spotify {
                 }
 
                 savefile.write("\nSong with most listens in EU: \n");
-                for (Model_Statystyki_Spotify stats : v_mls) {
+                for (ModelStatisticsSpotify stats : v_mls) {
                     savefile.write("Author: " + stats.getAuthorName() + " " + stats.getAuthorLastName()
                             + "  Number of listens: " + stats.getPlaysCount() + " Region: " + stats.getContinent() + "\n");
                 }
 
                 savefile.write("\nSong with least listens in EU: \n");
-                for (Model_Statystyki_Spotify stats : v_lps) {
+                for (ModelStatisticsSpotify stats : v_lps) {
                     savefile.write("Author: " + stats.getAuthorName() + " " + stats.getAuthorLastName()
                             + "  Number of listens: " + stats.getPlaysCount() + " Region: " + stats.getContinent() + "\n");
                 }
@@ -455,7 +533,7 @@ public class Model_Statystyki_Spotify {
 
                 // NA
                 savefile.write("Author/s with the most listens in NA: \n");
-                for (Model_Statystyki_Spotify stats : spotifystatslist) {
+                for (ModelStatisticsSpotify stats : spotifystatslist) {
                     if ("NA".equals(stats.getContinent())) {
                         list_buf.add(stats);
                     }
@@ -477,13 +555,13 @@ public class Model_Statystyki_Spotify {
                 }
 
                 savefile.write("\nSong with most listens in NA: \n");
-                for (Model_Statystyki_Spotify stats : v_mls) {
+                for (ModelStatisticsSpotify stats : v_mls) {
                     savefile.write("Author: " + stats.getAuthorName() + " " + stats.getAuthorLastName()
                             + "  Number of listens: " + stats.getPlaysCount() + " Region: " + stats.getContinent() + "\n");
                 }
 
                 savefile.write("\nSong with least listens in NA: \n");
-                for (Model_Statystyki_Spotify stats : v_lps) {
+                for (ModelStatisticsSpotify stats : v_lps) {
                     savefile.write("Author: " + stats.getAuthorName() + " " + stats.getAuthorLastName()
                             + "  Number of listens: " + stats.getPlaysCount() + " Region: " + stats.getContinent() + "\n");
                 }
@@ -492,7 +570,7 @@ public class Model_Statystyki_Spotify {
 
                 // AS
                 savefile.write("Author/s with the most listens in AS: \n");
-                for (Model_Statystyki_Spotify stats : spotifystatslist) {
+                for (ModelStatisticsSpotify stats : spotifystatslist) {
                     if ("AS".equals(stats.getContinent())) {
                         list_buf.add(stats);
                     }
@@ -514,13 +592,13 @@ public class Model_Statystyki_Spotify {
                 }
 
                 savefile.write("\nSong with most listens in AS: \n");
-                for (Model_Statystyki_Spotify stats : v_mls) {
+                for (ModelStatisticsSpotify stats : v_mls) {
                     savefile.write("Author: " + stats.getAuthorName() + " " + stats.getAuthorLastName()
                             + "  Number of listens: " + stats.getPlaysCount() + " Region: " + stats.getContinent() + "\n");
                 }
 
                 savefile.write("\nSong with least listens in AS: \n");
-                for (Model_Statystyki_Spotify stats : v_lps) {
+                for (ModelStatisticsSpotify stats : v_lps) {
                     savefile.write("Author: " + stats.getAuthorName() + " " + stats.getAuthorLastName()
                             + "  Number of listens: " + stats.getPlaysCount() + " Region: " + stats.getContinent() + "\n");
                 }
@@ -529,7 +607,7 @@ public class Model_Statystyki_Spotify {
 
                 // AF
                 savefile.write("Author/s with the most listens in AF: \n");
-                for (Model_Statystyki_Spotify stats : spotifystatslist) {
+                for (ModelStatisticsSpotify stats : spotifystatslist) {
                     if ("AF".equals(stats.getContinent())) {
                         list_buf.add(stats);
                     }
@@ -551,13 +629,13 @@ public class Model_Statystyki_Spotify {
                 }
 
                 savefile.write("\nSong with most listens in AF: \n");
-                for (Model_Statystyki_Spotify stats : v_mls) {
+                for (ModelStatisticsSpotify stats : v_mls) {
                     savefile.write("Author: " + stats.getAuthorName() + " " + stats.getAuthorLastName()
                             + "  Number of listens: " + stats.getPlaysCount() + " Region: " + stats.getContinent() + "\n");
                 }
 
                 savefile.write("\nSong with least listens in AF: \n");
-                for (Model_Statystyki_Spotify stats : v_lps) {
+                for (ModelStatisticsSpotify stats : v_lps) {
                     savefile.write("Author: " + stats.getAuthorName() + " " + stats.getAuthorLastName()
                             + "  Number of listens: " + stats.getPlaysCount() + " Region: " + stats.getContinent() + "\n");
                 }
@@ -569,22 +647,29 @@ public class Model_Statystyki_Spotify {
             }
 
             savefile.write("Sorted list:\n");
-            for (Model_Statystyki_Spotify stats : artistSorter(spotifystatslist)) {
+            for (ModelStatisticsSpotify stats : artistSorter(spotifystatslist)) {
                 savefile.write(stats.getAuthorName() + " " + stats.getAuthorLastName() + " " + stats.getTitle()
                         + " " + stats.getContinent() + " " + stats.getPlaysCount() + " " + stats.getSongTime() + "\n");
             }
         }
     }
-    public List<Model_Statystyki_Spotify> setStatSpotify(String reg,List<Model_Statystyki_Spotify> list){
+    /**
+    * Filters the list of Spotify statistics based on a specified region.
+    *
+    * @param reg The region to filter by. Pass "WorldWide" to include all regions.
+    * @param list The list of Spotify statistics to filter.
+    * @return A list of Spotify statistics that belong to the specified region or the entire list if "WorldWide" is selected.
+    */
+    public List<ModelStatisticsSpotify> setStatSpotify(String reg,List<ModelStatisticsSpotify> list){
         
-        List<Model_Statystyki_Spotify> substatspotifylist = new ArrayList<>();
-        for (Model_Statystyki_Spotify stats : list) {
+        List<ModelStatisticsSpotify> substatspotifylist = new ArrayList<>();
+        for (ModelStatisticsSpotify stats : list) {
             if (stats.getContinent().trim().equals(reg.trim())) {
                 substatspotifylist.add(stats);
             }
         }
         if(reg.trim().equals("WorldWide")){
-            for (Model_Statystyki_Spotify stats : list) {
+            for (ModelStatisticsSpotify stats : list) {
                  substatspotifylist.add(stats);
             }
         }
@@ -594,56 +679,112 @@ public class Model_Statystyki_Spotify {
     
     
     
-    public String getAuthorName() {
-        /**
-         * Metoda zwraca imie autora
-         * @return authorName
-         */
-        return authorName;
-    }  
-    
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
+    /**
+ * Get the author's first name.
+ *
+ * @return The author's first name.
+ */
+public String getAuthorName() {
+    return authorName;
+}
 
-    public String getAuthorLastName() {
-        return authorLastName;
-    }
+/**
+ * Set the author's first name.
+ *
+ * @param authorName The author's first name to set.
+ */
+public void setAuthorName(String authorName) {
+    this.authorName = authorName;
+}
 
-    public void setAuthorLastName(String authorLastName) {
-        this.authorLastName = authorLastName;
-    }
+/**
+ * Get the author's last name.
+ *
+ * @return The author's last name.
+ */
+public String getAuthorLastName() {
+    return authorLastName;
+}
 
-    public String getTitle() {
-        return title;
-    }
+/**
+ * Set the author's last name.
+ *
+ * @param authorLastName The author's last name to set.
+ */
+public void setAuthorLastName(String authorLastName) {
+    this.authorLastName = authorLastName;
+}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+/**
+ * Get the title of the song.
+ *
+ * @return The title of the song.
+ */
+public String getTitle() {
+    return title;
+}
 
-    public String getContinent() {
-        return continent;
-    }
+/**
+ * Set the title of the song.
+ *
+ * @param title The title of the song to set.
+ */
+public void setTitle(String title) {
+    this.title = title;
+}
 
-    public void setContinent(String continent) {
-        this.continent = continent;
-    }
+/**
+ * Get the continent where the author has their listeners.
+ *
+ * @return The continent.
+ */
+public String getContinent() {
+    return continent;
+}
 
-    public int getPlaysCount() {
-        return playsCount;
-    }
+/**
+ * Set the continent where the author has their listeners.
+ *
+ * @param continent The continent to set.
+ */
+public void setContinent(String continent) {
+    this.continent = continent;
+}
 
-    public void setPlaysCount(int playsCount) {
-        this.playsCount = playsCount;
-    }
+/**
+ * Get the number of plays for the song.
+ *
+ * @return The number of plays.
+ */
+public int getPlaysCount() {
+    return playsCount;
+}
 
-    public double getSongTime() {
-        return songTime;
-    }
+/**
+ * Set the number of plays for the song.
+ *
+ * @param playsCount The number of plays to set.
+ */
+public void setPlaysCount(int playsCount) {
+    this.playsCount = playsCount;
+}
 
-    public void setSongTime(double songTime) {
-        this.songTime = songTime;
-    }
+/**
+ * Get the duration of the song in minutes.
+ *
+ * @return The duration of the song.
+ */
+public double getSongTime() {
+    return songTime;
+}
+
+/**
+ * Set the duration of the song in minutes.
+ *
+ * @param songTime The duration of the song to set.
+ */
+public void setSongTime(double songTime) {
+    this.songTime = songTime;
+}
 
 }

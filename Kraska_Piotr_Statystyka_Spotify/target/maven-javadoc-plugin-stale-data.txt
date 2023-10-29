@@ -1,0 +1,48 @@
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'C:/Users/Piotr/source/repos/Java_Projects/Kraska_Piotr_Statystyka_Spotify/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Piotr/source/repos/Java_Projects/Kraska_Piotr_Statystyka_Spotify/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Kraska_Piotr_Statystyka_Spotify 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'Kraska_Piotr_Statystyka_Spotify 1.0-SNAPSHOT API'
+Main
+pl.polsl.Controller_package
+pl.polsl.Model_package
+pl.polsl.View_package
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\src\main\java = 1698423533085
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\allclasses-index.html = 1698612676036
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\allpackages-index.html = 1698612676039
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\copy.svg = 1698612676077
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\element-list = 1698612675893
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\help-doc.html = 1698612676071
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\index-all.html = 1698612676064
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\index.html = 1698612676019
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\jquery-ui.overrides.css = 1698612676108
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\member-search-index.js = 1698612676045
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\module-search-index.js = 1698612676041
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\overview-summary.html = 1698612676066
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\overview-tree.html = 1698612676014
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\package-search-index.js = 1698612676042
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\script.js = 1698612676075
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\search.js = 1698612676079
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\serialized-form.html = 1698612675958
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\stylesheet.css = 1698612676074
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\tag-search-index.js = 1698612676046
+C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_Statystyka_Spotify\target\site\apidocs\type-search-index.js = 1698612676043

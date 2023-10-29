@@ -3,20 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package pl.polsl.View_package;
-import pl.polsl.Controller_package.Kontroler_Statystyki_Spotify;
+import pl.polsl.Controller_package.ControllerStatisticsSpotify;
 
 
 /**
- *
+ * The main view for Spotify statistics.
  * @author Piotr
+ * @version 1.0
  */
-public class View_Statystyki_Spotify extends javax.swing.JFrame {
+public class ViewStatisticsSpotify extends javax.swing.JFrame {
 
-    private final Kontroler_Statystyki_Spotify theController;
+    private final ControllerStatisticsSpotify theController;
     /**
      * Creates new form View_Statystyki_Spotify
+     * @param theController The controller associated with this view.
      */
-    public View_Statystyki_Spotify(Kontroler_Statystyki_Spotify theController){
+    public ViewStatisticsSpotify(ControllerStatisticsSpotify theController){
         this.theController = theController;
         initComponents();
     }
@@ -204,49 +206,84 @@ public class View_Statystyki_Spotify extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+    * Handles the action when jButton1 is clicked.
+    * It prints a message to the console and calls the generateReportAction method of the controller.
+    *
+    * @param evt The ActionEvent representing the button click event.
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling cod
         System.out.println("Button1 Clicked!!");
         theController.generateReportAction();
 
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    /**
+    * Handles the action when jButton3 is clicked.
+    * It prints a message to the console and calls the showLeastPopular method of the controller to display the least popular artists.
+    *
+    * @param evt The ActionEvent representing the button click event.
+    */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         System.out.println("Button3 Clicked!!");
         String text = theController.showLeastPopular();
         jLabel3.setText(text);
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    /**
+    * Handles the action when jButton2 is clicked.
+    * It prints a message to the console and calls the showMostPopular method of the controller to display the most popular artists.
+    *
+    * @param evt The ActionEvent representing the button click event.
+    */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         System.out.println("Button2 Clicked!!");
         String text = theController.showMostPopular();
         jLabel2.setText(text);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    /**
+    * Handles the action when jButton4 is clicked.
+    * It prints a message to the console and calls the showMostSong method of the controller to display the most popular songs.
+    *
+    * @param evt The ActionEvent representing the button click event.
+    */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         System.out.println("Button4 Clicked!!");
         String text = theController.showMostSong();
         jLabel4.setText(text);
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    /**
+    * Handles the action when an item is selected in jComboBox1.
+    * It prints a message to the console, and sets the selected region in the controller using the setRegion method.
+    *
+    * @param evt The ActionEvent representing the item selection event.
+    */
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
         System.out.println("ComboBox1 Clicked!!");
         String selectedRegion = (String) jComboBox1.getSelectedItem();
         theController.setRegion(selectedRegion);
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
+    /**
+    * Handles the action when jButton5 is clicked.
+    * It prints a message to the console, retrieves and displays the least popular songs, and updates jLabel5 with the results.
+    *
+    * @param evt The ActionEvent representing the button click event.
+    */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         System.out.println("Button4 Clicked!!");
         String text = theController.showLeastSong();
         jLabel5.setText(text);
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    /**
+    * Handles the action when jButton7 is clicked.
+    * It prints a message to the console, calculates the Spearman's rank correlation coefficient, and updates jLabel6 with the result.
+    *
+    * @param evt The ActionEvent representing the button click event.
+    */
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         System.out.println("Button7 Clicked!!");
@@ -254,7 +291,12 @@ public class View_Statystyki_Spotify extends javax.swing.JFrame {
         String text = Double.toString(value);
         jLabel6.setText(text);
     }//GEN-LAST:event_jButton7ActionPerformed
-
+    /**
+    * Handles the action when jButton6 is clicked.
+    * It prints a message to the console and displays the report using the show_Report method.
+    *
+    * @param evt The ActionEvent representing the button click event.
+    */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         System.out.println("Button7 Clicked!!");
@@ -262,7 +304,9 @@ public class View_Statystyki_Spotify extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton6ActionPerformed
 
-
+/**
+ * Declaration of GUI components
+ */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -281,34 +325,59 @@ public class View_Statystyki_Spotify extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
-// Getter dla jButton1
-    public javax.swing.JButton getJButton1() {
-        return jButton1;
-    }
+/**
+ * Gets the JButton component with the action jButton1.
+ *
+ * @return The JButton with the action jButton1.
+ */
+public javax.swing.JButton getJButton1() {
+    return jButton1;
+}
 
-    // Getter dla jButton2
-    public javax.swing.JButton getJButton2() {
-        return jButton2;
-    }
+/**
+ * Gets the JButton component with the action jButton2.
+ *
+ * @return The JButton with the action jButton2.
+ */
+public javax.swing.JButton getJButton2() {
+    return jButton2;
+}
 
-    // Getter dla jButton3
-    public javax.swing.JButton getJButton3() {
-        return jButton3;
-    }
+/**
+ * Gets the JButton component with the action jButton3.
+ *
+ * @return The JButton with the action jButton3.
+ */
+public javax.swing.JButton getJButton3() {
+    return jButton3;
+}
 
-    // Getter dla jButton4
-    public javax.swing.JButton getJButton4() {
-        return jButton4;
-    }
+/**
+ * Gets the JButton component with the action jButton4.
+ *
+ * @return The JButton with the action jButton4.
+ */
+public javax.swing.JButton getJButton4() {
+    return jButton4;
+}
 
-    // Getter dla jComboBox1
-    public javax.swing.JComboBox<String> getJComboBox1() {
-        return jComboBox1;
-    }
+/**
+ * Gets the JComboBox component with the action jComboBox1.
+ *
+ * @return The JComboBox with the action jComboBox1.
+ */
+public javax.swing.JComboBox<String> getJComboBox1() {
+    return jComboBox1;
+}
 
-    // Getter dla jLabel1 (jeśli jest potrzebny)
-    public javax.swing.JLabel getJLabel1() {
-        return jLabel1;
-    }
+/**
+ * Gets the JLabel component with the action jLabel1.
+ *
+ * @return The JLabel with the action jLabel1.
+ */
+public javax.swing.JLabel getJLabel1() {
+    return jLabel1;
+}
+
 }
 
