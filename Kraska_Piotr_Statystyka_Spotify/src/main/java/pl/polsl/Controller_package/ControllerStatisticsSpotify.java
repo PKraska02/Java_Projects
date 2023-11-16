@@ -6,7 +6,7 @@ package pl.polsl.Controller_package;
  */
 import pl.polsl.Model_package.ModelStatisticsSpotify;
 import pl.polsl.View_package.ViewStatisticsSpotify;
-import pl.polsl.View_package.Show_Report;
+import pl.polsl.View_package.Show_Report_old;
 import java.io.IOException;
 import java.util.List;
 import java.io.FileNotFoundException;
@@ -33,7 +33,7 @@ public class ControllerStatisticsSpotify {
     /**
      * An instance of the Show_Report class for generating reports.
      */
-    private final Show_Report report;
+    private final Show_Report_old report;
     
     /**
      * A flag to indicate if a region check is active.
@@ -61,7 +61,7 @@ public class ControllerStatisticsSpotify {
      */
     public ControllerStatisticsSpotify() {
         this.view = new ViewStatisticsSpotify(this);
-        this.report = new Show_Report();
+        this.report = new Show_Report_old();
         this.view.setVisible(true);
     }
 
