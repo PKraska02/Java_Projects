@@ -8,10 +8,17 @@ pl\polsl\View_package\ViewStatisticsSpotify$8.class
 pl\polsl\View_package\Show_Report$1.class
 pl\polsl\View_package\ViewStatisticsSpotify.class
 pl\polsl\Model_package\ModelStatisticsSpotify$1.class
+pl\polsl\Controller_package\package-info.class
+pl\polsl\View_package\Show_Report_old$1.class
 pl\polsl\View_package\ViewStatisticsSpotify$5.class
 pl\polsl\View_package\ViewStatisticsSpotify$6.class
 Main\Statystyki_Spotify$1.class
 pl\polsl\Model_package\StringDoublePair.class
+Main\package-info.class
+pl\polsl\View_package\package-info.class
+pl\polsl\View_package\Show_Report_old.class
+pl\polsl\Model_package\package-info.class
+pl\polsl\View_package\ViewStatisticsSpotify$9.class
 pl\polsl\View_package\ViewStatisticsSpotify$4.class
 pl\polsl\Model_package\IntegerDoublePair.class
 Main\Statystyki_Spotify.class
