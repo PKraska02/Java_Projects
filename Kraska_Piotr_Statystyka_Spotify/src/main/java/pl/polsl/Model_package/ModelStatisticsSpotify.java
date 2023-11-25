@@ -83,7 +83,7 @@ public class ModelStatisticsSpotify {
                 }
             }
         } catch (FileNotFoundException e) {
-            throw new FileNotFoundException("Plik nie został otwarty");
+            throw new FileNotFoundException("Plik nie zostal otwarty");
         }
 
         return spotifyStatsList;
@@ -237,13 +237,7 @@ public class ModelStatisticsSpotify {
     public List<ModelStatisticsSpotify> artistSorter(List<ModelStatisticsSpotify> spotifystatslist) {
         List<ModelStatisticsSpotify> sortedList = new ArrayList<>(spotifystatslist);
 
-        Collections.sort(sortedList, new Comparator<ModelStatisticsSpotify>() {
-            @Override
-            public int compare(ModelStatisticsSpotify x, ModelStatisticsSpotify y) {
-                return Integer.compare(y.getPlaysCount(), x.getPlaysCount());
-            }
-        });
-
+        Collections.sort(sortedList, (x, y) -> Integer.compare(y.getPlaysCount(), x.getPlaysCount()));
         return sortedList;
     }
     /**
