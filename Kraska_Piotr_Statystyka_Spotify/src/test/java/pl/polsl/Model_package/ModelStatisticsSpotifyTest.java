@@ -14,11 +14,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.io.FileNotFoundException;
-import java.util.HashSet;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+//import java.util.HashSet;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.jupiter.params.provider.EmptySource;
-import org.junit.jupiter.params.provider.NullSource;
+//import org.junit.jupiter.params.provider.EmptySource;
+//import org.junit.jupiter.params.provider.NullSource;
 
 /**
  *
@@ -44,43 +46,51 @@ public class ModelStatisticsSpotifyTest {
     public void tearDown() throws Exception {
     }
 
-    /**
-     * Test of readFile method, of class ModelStatisticsSpotify.
-     */
-    //Change the URL
-    @ParameterizedTest
-    @ValueSource(strings = {"C://Users//Piotr//source//repos//Java_Projects//Kraska_Piotr_Statystyka_Spotify//testReadFile_filepath.txt", " "})
-    public void testReadFile(String filePath) throws FileNotFoundException {
-        System.out.println("testReadFile is running...");
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        ModelStatisticsSpotify suggestInstance = new ModelStatisticsSpotify();
-        List<ModelStatisticsSpotify> expResult = new ArrayList<>();
-        //Example values for testing...
-        suggestInstance.setAuthorName("A");
-        suggestInstance.setAuthorLastName("b");
-        suggestInstance.setTitle("c");
-        suggestInstance.setContinent("EU");
-        suggestInstance.setPlaysCount(1);
-        suggestInstance.setSongTime(1);
-        expResult.add(suggestInstance);
-        
-        if (filePath == null || filePath.trim().isEmpty()) {
-            assertThrows(FileNotFoundException.class, () -> {
-                instance.readFile(filePath);
-                fail("FileNotFoundException!");
-            });
-        } else {
-            List<ModelStatisticsSpotify> result = instance.readFile(filePath);
-            assertEquals(expResult.size(), result.size());
-            for (int i = 0; i < expResult.size(); i++) {
-                System.out.println(expResult.get(i));
-                System.out.println(result.get(i));
-                assertEquals(expResult.get(i), result.get(i));
-            }
-        }
-        System.out.println("testReadFile ending process...");
+        @ParameterizedTest
+        @ValueSource(strings = {
+                "C://Users//Piotr//source//repos//Java_Projects//Kraska_Piotr_Statystyka_Spotify//testReadFile_filepath.txt",
+                "E://test.txt",
+                " "
+        })
+        public void testReadFile(String filePath) throws FileNotFoundException {
+            System.out.println("testReadFile is running...");
+            ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
+            ModelStatisticsSpotify suggestInstance = new ModelStatisticsSpotify();
+            List<ModelStatisticsSpotify> expResult = new ArrayList<>();
+            // Example values for testing...
+            suggestInstance.setAuthorName("A");
+            suggestInstance.setAuthorLastName("b");
+            suggestInstance.setTitle("c");
+            suggestInstance.setContinent("EU");
+            suggestInstance.setPlaysCount(1);
+            suggestInstance.setSongTime(1);
+            expResult.add(suggestInstance);
 
-    }
+            if (filePath == null || filePath.trim().isEmpty()) {
+                assertThrows(FileNotFoundException.class, () -> instance.readFile(filePath));
+            } else if (Files.notExists(Paths.get(filePath.trim()))) {
+                assertThrows(FileNotFoundException.class, () -> {
+                instance.readFile(filePath);
+                });       
+            } else {
+                List<ModelStatisticsSpotify> result = instance.readFile(filePath);
+                assertEquals(expResult.size(), result.size());
+                for (int i = 0; i < expResult.size(); i++) {
+                    ModelStatisticsSpotify expectedModel = expResult.get(i);
+                    ModelStatisticsSpotify actualModel = result.get(i);
+
+                    // Compare individual attributes
+                    assertEquals(expectedModel.getAuthorName(), actualModel.getAuthorName());
+                    assertEquals(expectedModel.getAuthorLastName(), actualModel.getAuthorLastName());
+                    assertEquals(expectedModel.getTitle(), actualModel.getTitle());
+                    assertEquals(expectedModel.getContinent(), actualModel.getContinent());
+                    assertEquals(expectedModel.getPlaysCount(), actualModel.getPlaysCount());
+                    assertEquals(expectedModel.getSongTime(), actualModel.getSongTime());
+                }
+            }
+            System.out.println("testReadFile ending process...");
+        }
+
 
     /**
      * Test of saveDataToFile method, of class ModelStatisticsSpotify.

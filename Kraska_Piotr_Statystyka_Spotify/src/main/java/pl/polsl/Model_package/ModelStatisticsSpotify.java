@@ -79,11 +79,11 @@ public class ModelStatisticsSpotify {
                     spotifyStats.setSongTime(Double.parseDouble(data[5]));
                     spotifyStatsList.add(spotifyStats);
                 } else {
-                    throw new RuntimeException("Bledny szablon lub zle zapisane dane w pliku");
+                    throw new FileNotFoundException("Bledny szablon lub zle zapisane dane w pliku");
                 }
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("Plik nie został otwarty");
+            throw new FileNotFoundException("Plik nie został otwarty");
         }
 
         return spotifyStatsList;
