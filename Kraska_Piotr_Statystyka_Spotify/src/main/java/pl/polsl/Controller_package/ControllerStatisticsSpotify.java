@@ -6,11 +6,12 @@ package pl.polsl.Controller_package;
  */
 import pl.polsl.Model_package.ModelStatisticsSpotify;
 import pl.polsl.View_package.ViewStatisticsSpotify;
-import pl.polsl.View_package.Show_Report_old;
+import pl.polsl.View_package.Show_Report;
 import java.io.IOException;
 import java.util.List;
 import java.io.FileNotFoundException;
 import java.util.Map;
+import pl.polsl.View_package.ShowDatabase;
 /**
  *
  * 
@@ -33,7 +34,12 @@ public class ControllerStatisticsSpotify {
     /**
      * An instance of the Show_Report class for generating reports.
      */
-    private final Show_Report_old report;
+    private final Show_Report report;
+    
+    /**
+     * An instance of the ShowDatabase class for generating reports.
+     */
+    private final ShowDatabase database;
     
     /**
      * A flag to indicate if a region check is active.
@@ -61,7 +67,8 @@ public class ControllerStatisticsSpotify {
      */
     public ControllerStatisticsSpotify() {
         this.view = new ViewStatisticsSpotify(this);
-        this.report = new Show_Report_old();
+        this.report = new Show_Report();
+        this.database = new ShowDatabase();
         this.view.setVisible(true);
     }
 
@@ -230,6 +237,13 @@ public class ControllerStatisticsSpotify {
         this.report.setVisible(true);
         this.report.displayFileContents(filePath);
         
+    }
+     /**
+    * Displays the database by making the report window visible and loading the report content from a file.
+    */
+    public void showDatabase(){
+        this.database.setVisible(true);
+        this.database.displayDatabaseContents(filePath2);
     }
 
 } 

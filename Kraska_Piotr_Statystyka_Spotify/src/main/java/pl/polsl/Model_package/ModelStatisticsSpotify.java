@@ -22,7 +22,7 @@ import java.util.Comparator;
  * This class represents the data model for Spotify statistics.
  * It contains methods to read and process statistics data.
  * @author Piotr
- * @version 1.0
+ * @version 2.0
  */
 public class ModelStatisticsSpotify {
     /**
@@ -641,11 +641,25 @@ public class ModelStatisticsSpotify {
             }
 
             savefile.write("Sorted list:\n");
-            for (ModelStatisticsSpotify stats : artistSorter(spotifystatslist)) {
-                savefile.write(stats.getAuthorName() + " " + stats.getAuthorLastName() + " " + stats.getTitle()
-                        + " " + stats.getContinent() + " " + stats.getPlaysCount() + " " + stats.getSongTime() + "\n");
-            }
+            //for (ModelStatisticsSpotify stats : artistSorter(spotifystatslist)) {
+             //   savefile.write(stats.getAuthorName() + " " + stats.getAuthorLastName() + " " + stats.getTitle()
+            //            + " " + stats.getContinent() + " " + stats.getPlaysCount() + " " + stats.getSongTime() + "\n");
+            //}
+            spotifystatslist.stream()
+                .sorted(Comparator.comparingInt(ModelStatisticsSpotify::getPlaysCount).reversed())
+                .map(stats -> stats.getAuthorName() + " " + stats.getAuthorLastName() + " " + stats.getTitle() + " "
+                        + stats.getContinent() + " " + stats.getPlaysCount() + " " + stats.getSongTime())
+                .forEach(line -> {
+                    try {
+                        savefile.write(line + "\n");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+        }catch (IOException e) {
+            throw new IOException("Incorrect data was set "); 
         }
+        
     }
     /**
     * Filters the list of Spotify statistics based on a specified region.

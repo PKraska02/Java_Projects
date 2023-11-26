@@ -12,7 +12,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -21,7 +20,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.AbstractMap;
 import java.util.Comparator;
+import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
@@ -58,7 +59,7 @@ public class ModelStatisticsSpotifyTest {
                 " "
         })
         public void testReadFile(String filePath) throws FileNotFoundException {
-            System.out.println("testReadFile is running...");
+            //System.out.println("testReadFile is running...");
             ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
             ModelStatisticsSpotify suggestInstance = new ModelStatisticsSpotify();
             List<ModelStatisticsSpotify> expResult = new ArrayList<>();
@@ -93,7 +94,7 @@ public class ModelStatisticsSpotifyTest {
                     assertEquals(expectedModel.getSongTime(), actualModel.getSongTime());
                 }
             }
-            System.out.println("testReadFile ending process...");
+            //System.out.println("testReadFile ending process...");
         }
 
 
@@ -106,7 +107,7 @@ public class ModelStatisticsSpotifyTest {
         "C://Users//Piotr//source//repos//Java_Projects//Kraska_Piotr_Statystyka_Spotify//testReadFile_filepath.txt", 
     })
     public void testSaveDataToFile(String filePath) {
-        System.out.println("testSaveDataToFile is running...");
+        //System.out.println("testSaveDataToFile is running...");
 
         List<ModelStatisticsSpotify> spotifystatslist = new ArrayList<>();
         ModelStatisticsSpotify stats1 = new ModelStatisticsSpotify();
@@ -128,7 +129,7 @@ public class ModelStatisticsSpotifyTest {
             fail("IOException occurred while reading the file.");
         }
 
-        System.out.println("testSaveDataToFile ending process...");
+        //System.out.println("testSaveDataToFile ending process...");
     }
 
     /**
@@ -140,12 +141,12 @@ public class ModelStatisticsSpotifyTest {
             "A b c EU 1 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5"
     })
     public void testMostPopularArtist(String inputData) {
-        System.out.println("testMostPopularArtist is running...");
+        //System.out.println("testMostPopularArtist is running...");
 
         String[] artistDataList = inputData.split(", ");
         List<ModelStatisticsSpotify> spotifystatslist = new ArrayList<>();
         for (String artistData : artistDataList) {
-            System.out.println("Processing input: " + artistData);
+            //System.out.println("Processing input: " + artistData);
             ModelStatisticsSpotify stats = new ModelStatisticsSpotify();
 
             String[] data = artistData.split(" ");
@@ -171,7 +172,7 @@ public class ModelStatisticsSpotifyTest {
             assertEquals(expResult, result);
 
 
-        System.out.println("testMostPopularArtist ending process...");
+        //System.out.println("testMostPopularArtist ending process...");
     }
 
     /**
@@ -183,14 +184,14 @@ public class ModelStatisticsSpotifyTest {
             "A b c EU 1 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5"
     })
     public void testLeastPopularArtist(String inputData) {
-        System.out.println("testLeastPopularArtist is running...");
+        //System.out.println("testLeastPopularArtist is running...");
 
         // Split the input data into individual artists
         String[] artistDataList = inputData.split(", ");
         List<ModelStatisticsSpotify> spotifystatslist = new ArrayList<>();
         for (String artistData : artistDataList) {
             // Process each artist data as a separate test case
-            System.out.println("Processing input: " + artistData);
+            //System.out.println("Processing input: " + artistData);
             ModelStatisticsSpotify stats = new ModelStatisticsSpotify();
 
             String[] data = artistData.split(" ");
@@ -216,7 +217,7 @@ public class ModelStatisticsSpotifyTest {
             assertEquals(expResult, result);
 
 
-        System.out.println("testLeastPopularArtist ending process...");
+        //System.out.println("testLeastPopularArtist ending process...");
     }
 
     /**
@@ -228,12 +229,12 @@ public class ModelStatisticsSpotifyTest {
             "A b c EU 1 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5"
     })
     public void testMostPopularSong(String inputData) {
-        System.out.println("testMostPopularSong is running...");
+        //System.out.println("testMostPopularSong is running...");
 
         String[] artistDataList = inputData.split(", ");
         List<ModelStatisticsSpotify> spotifystatslist = new ArrayList<>();
         for (String artistData : artistDataList) {
-            System.out.println("Processing input: " + artistData);
+            //System.out.println("Processing input: " + artistData);
             ModelStatisticsSpotify stats = new ModelStatisticsSpotify();
 
             String[] data = artistData.split(" ");
@@ -262,7 +263,7 @@ public class ModelStatisticsSpotifyTest {
             assertEquals(expResult, result);
 
 
-        System.out.println("testMostPopularSong ending process...");
+        //System.out.println("testMostPopularSong ending process...");
     }
 
     /**
@@ -274,12 +275,12 @@ public class ModelStatisticsSpotifyTest {
             "A b c EU 1 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5"
     })
     public void testLeastPopularSong(String inputData) {
-        System.out.println("testLeastPopularSong is running...");
+        //System.out.println("testLeastPopularSong is running...");
 
         String[] artistDataList = inputData.split(", ");
         List<ModelStatisticsSpotify> spotifystatslist = new ArrayList<>();
         for (String artistData : artistDataList) {
-            System.out.println("Processing input: " + artistData);
+            //System.out.println("Processing input: " + artistData);
             ModelStatisticsSpotify stats = new ModelStatisticsSpotify();
 
             String[] data = artistData.split(" ");
@@ -308,7 +309,7 @@ public class ModelStatisticsSpotifyTest {
             assertEquals(expResult, result);
 
 
-        System.out.println("testLeastPopularSong ending process...");
+        //System.out.println("testLeastPopularSong ending process...");
     }
 
     /**
@@ -320,7 +321,7 @@ public class ModelStatisticsSpotifyTest {
             "A b c EU 1 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5"
     })
     public void testArtistSorter(String inputData) {
-        System.out.println("testArtistSorter is running...");
+        //System.out.println("testArtistSorter is running...");
 
             // Split the input data into individual artists
             String[] artistDataList = inputData.split(", ");
@@ -328,7 +329,7 @@ public class ModelStatisticsSpotifyTest {
             ModelStatisticsSpotify stats;
             for (String artistData : artistDataList) {
                 // Process each artist data as a separate test case
-                System.out.println("Processing input: " + artistData);
+                //System.out.println("Processing input: " + artistData);
 
                 String[] data = artistData.split(" ");
                 stats = new ModelStatisticsSpotify(); // Create a new instance for each artist
@@ -348,7 +349,7 @@ public class ModelStatisticsSpotifyTest {
             List<ModelStatisticsSpotify> result = instance.artistSorter(spotifystatslist);
             assertEquals(expResult, result);
 
-            System.out.println("testArtistSorter ending process...");
+            //System.out.println("testArtistSorter ending process...");
     }
 
     /**
@@ -360,7 +361,7 @@ public class ModelStatisticsSpotifyTest {
             "A b c EU 3 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5"
     })
     public void testArithmeticMeanOfListens(String inputData) {
-    System.out.println("testArithmeticMeanOfListens is running...");
+    //System.out.println("testArithmeticMeanOfListens is running...");
 
         // Split the input data into individual artists
         String[] artistDataList = inputData.split(", ");
@@ -368,7 +369,7 @@ public class ModelStatisticsSpotifyTest {
 
         for (String artistData : artistDataList) {
             // Process each artist data as a separate test case
-            System.out.println("Processing input: " + artistData);
+            //System.out.println("Processing input: " + artistData);
 
             String[] data = artistData.split(" ");
             ModelStatisticsSpotify stats = new ModelStatisticsSpotify();
@@ -392,7 +393,7 @@ public class ModelStatisticsSpotifyTest {
         // Adjust the assertions based on the expected result
         assertEquals(expResult, result);
 
-        System.out.println("testArithmeticMeanOfListens ending process...");
+        //System.out.println("testArithmeticMeanOfListens ending process...");
     }
 
     /**
@@ -420,13 +421,13 @@ public class ModelStatisticsSpotifyTest {
     """
     })
     public void testSpearmanKorelation(String inputData) {
-        System.out.println("testSpearmanKorelation is running...");
+        //System.out.println("testSpearmanKorelation is running...");
         // Split the input data into individual artists
         String[] artistDataList = inputData.split("\n");
         List<ModelStatisticsSpotify> spotifystatslist = new ArrayList<>();
 
         for (String artistData : artistDataList) {
-            System.out.println("Processing input: " + artistData);
+            //System.out.println("Processing input: " + artistData);
             ModelStatisticsSpotify stats = new ModelStatisticsSpotify();
             String[] data = artistData.split(" ");
             stats.setAuthorName(data[0]);
@@ -445,202 +446,113 @@ public class ModelStatisticsSpotifyTest {
 
         assertEquals(expResult, result, 0);
 
-        System.out.println("testSpearmanKorelation ending process...");
+        //System.out.println("testSpearmanKorelation ending process...");
     }
-    //Ended part 1 of testmethod
 
     /**
      * Test of generateReport method, of class ModelStatisticsSpotify.
+     * @param inputData
+     * @throws java.io.IOException
      */
-    @Test
-    public void testGenerateReport() throws IOException {
-        System.out.println("generateReport");
-        List<ModelStatisticsSpotify> spotifystatslist = null;
-        String fl = "";
-        String reg = "";
+    @ParameterizedTest
+    @ValueSource(strings = {
+    """
+    A b c EU 3 1.0
+    X Y Z NA 5 3.5
+    P Q R AS 10 2.5
+    J D K AF 7 1.75
+    Ed Sheeran ShapeOfYou NA 10000000 3.53
+    Ed Sheeran ShapeOfYou EU 20000000 3.53
+    Ed Sheeran ShapeOfYou AS 5000000 3.53
+    Ed Sheeran ShapeOfYou AF 100000 3.53
+    """
+    })
+    public void testGenerateReport(String inputData) throws IOException {
+        enum Region {
+        EU, NA, AS, AF, WorldWide
+        }
+        List<ModelStatisticsSpotify> spotifystatslist = new ArrayList<>();
         ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        instance.generateReport(spotifystatslist, fl, reg);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String[] artistDataList = inputData.split("\n");
+
+        for (String artistData : artistDataList) {
+            ModelStatisticsSpotify stats = new ModelStatisticsSpotify();
+            String[] data = artistData.split(" ");
+            stats.setAuthorName(data[0]);
+            stats.setAuthorLastName(data[1]);
+            stats.setTitle(data[2]);
+            stats.setContinent(data[3]);
+            stats.setPlaysCount(Integer.parseInt(data[4]));
+            stats.setSongTime(Double.parseDouble(data[5]));
+
+            spotifystatslist.add(stats);
+        }
+        // Define the executable block that contains the method call
+        
+        for (Region region : Region.values()) {
+            String fl = "/invalid/path/test_report.txt";
+            Executable executable = () -> {
+                instance.generateReport(spotifystatslist,fl,region.name());
+            };
+            assertThrows(IOException.class, executable);
+        }
+
     }
 
     /**
      * Test of setStatSpotify method, of class ModelStatisticsSpotify.
+     * @param reg
+     * @param input
+     * @param expected
      */
-    @Test
-    public void testSetStatSpotify() {
-        System.out.println("setStatSpotify");
-        String reg = "";
-        List<ModelStatisticsSpotify> list = null;
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        List<ModelStatisticsSpotify> expResult = null;
-        List<ModelStatisticsSpotify> result = instance.setStatSpotify(reg, list);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getAuthorName method, of class ModelStatisticsSpotify.
-     */
-    @Test
-    public void testGetAuthorName() {
-        System.out.println("getAuthorName");
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        String expResult = "";
-        String result = instance.getAuthorName();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setAuthorName method, of class ModelStatisticsSpotify.
-     */
-    @Test
-    public void testSetAuthorName() {
-        System.out.println("setAuthorName");
-        String authorName = "";
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        instance.setAuthorName(authorName);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getAuthorLastName method, of class ModelStatisticsSpotify.
-     */
-    @Test
-    public void testGetAuthorLastName() {
-        System.out.println("getAuthorLastName");
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        String expResult = "";
-        String result = instance.getAuthorLastName();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setAuthorLastName method, of class ModelStatisticsSpotify.
-     */
-    @Test
-    public void testSetAuthorLastName() {
-        System.out.println("setAuthorLastName");
-        String authorLastName = "";
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        instance.setAuthorLastName(authorLastName);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getTitle method, of class ModelStatisticsSpotify.
-     */
-    @Test
-    public void testGetTitle() {
-        System.out.println("getTitle");
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        String expResult = "";
-        String result = instance.getTitle();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setTitle method, of class ModelStatisticsSpotify.
-     */
-    @Test
-    public void testSetTitle() {
-        System.out.println("setTitle");
-        String title = "";
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        instance.setTitle(title);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getContinent method, of class ModelStatisticsSpotify.
-     */
-    @Test
-    public void testGetContinent() {
-        System.out.println("getContinent");
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        String expResult = "";
-        String result = instance.getContinent();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setContinent method, of class ModelStatisticsSpotify.
-     */
-    @Test
-    public void testSetContinent() {
-        System.out.println("setContinent");
-        String continent = "";
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        instance.setContinent(continent);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getPlaysCount method, of class ModelStatisticsSpotify.
-     */
-    @Test
-    public void testGetPlaysCount() {
-        System.out.println("getPlaysCount");
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        int expResult = 0;
-        int result = instance.getPlaysCount();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setPlaysCount method, of class ModelStatisticsSpotify.
-     */
-    @Test
-    public void testSetPlaysCount() {
-        System.out.println("setPlaysCount");
-        int playsCount = 0;
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        instance.setPlaysCount(playsCount);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getSongTime method, of class ModelStatisticsSpotify.
-     */
-    @Test
-    public void testGetSongTime() {
-        System.out.println("getSongTime");
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        double expResult = 0.0;
-        double result = instance.getSongTime();
-        assertEquals(expResult, result, 0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setSongTime method, of class ModelStatisticsSpotify.
-     */
-    @Test
-    public void testSetSongTime() {
-        System.out.println("setSongTime");
-        double songTime = 0.0;
-        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-        instance.setSongTime(songTime);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+   @ParameterizedTest
+    @CsvSource({
+        // Test when reg is "EU"
+        "'EU', 'A b c EU 3 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5', 'A b c EU 3 1.0'",
         
-    }   
+        // Test when reg is "NA"
+        "'NA', 'A b c EU 3 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5', 'X Y Z NA 5 3.5'",
+        
+        // Test when reg is "WorldWide"
+        "'WorldWide', 'A b c EU 3 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5', 'A b c EU 3 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5'"
+    })
+    public void testSetStatSpotify(String reg, String input, String expected) {
+        List<ModelStatisticsSpotify> list = createStatsListFromString(input);
+        ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
+        List<ModelStatisticsSpotify> expResult = createStatsListFromString(expected);
+        List<ModelStatisticsSpotify> result = instance.setStatSpotify(reg, list);
+        ModelStatisticsSpotify expectedStats = expResult.get(0);
+        ModelStatisticsSpotify actualStats = result.get(0);
+
+        // Compare individual properties
+        assertEquals(expectedStats.getAuthorName(), actualStats.getAuthorName(),"Authors name are the same");
+        assertEquals(expectedStats.getAuthorLastName(), actualStats.getAuthorLastName(),"Authors last name are the same");
+        assertEquals(expectedStats.getTitle(), actualStats.getTitle(),"Titles are the same");
+        assertEquals(expectedStats.getContinent(), actualStats.getContinent(),"Continents are the same");
+        assertEquals(expectedStats.getPlaysCount(), actualStats.getPlaysCount(),"PlaysCount are the same");
+        assertEquals(expectedStats.getSongTime(), actualStats.getSongTime(), 0.001,"songTimes are the same"); 
+    }
+
+    /*
+        Helper method to create a list of ModelStatisticsSpotify from a string
+    */
+    private List<ModelStatisticsSpotify> createStatsListFromString(String input) {
+        List<ModelStatisticsSpotify> statsList = new ArrayList<>();
+        String[] statsData = input.split(", ");
+        for (String data : statsData) {
+            String[] values = data.split(" ");
+            ModelStatisticsSpotify stats = new ModelStatisticsSpotify();
+            stats.setAuthorName(values[0]);
+            stats.setAuthorLastName(values[1]);
+            stats.setTitle(values[2]);
+            stats.setContinent(values[3]);
+            stats.setPlaysCount(Integer.parseInt(values[4]));
+            stats.setSongTime(Double.parseDouble(values[5]));
+            statsList.add(stats);
+        }
+        return statsList;
+    }
+
+    
 }
 

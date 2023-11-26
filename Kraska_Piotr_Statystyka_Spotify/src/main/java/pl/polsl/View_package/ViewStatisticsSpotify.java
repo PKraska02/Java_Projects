@@ -32,21 +32,21 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        statisticsSpotifyName = new javax.swing.JLabel();
+        generateReportButton = new javax.swing.JButton();
+        showMostPopularArtistButton = new javax.swing.JButton();
+        showLeastPopularArtistButton = new javax.swing.JButton();
+        showMostPopularSongButton = new javax.swing.JButton();
+        chooseRegionComboBox = new javax.swing.JComboBox<>();
+        showMostPopularArtistText = new javax.swing.JLabel();
+        showLeastPopularArtistText = new javax.swing.JLabel();
+        showMostPopularSongText = new javax.swing.JLabel();
+        ShowLeastPopularSongButton = new javax.swing.JButton();
+        showLeastPopularSongText = new javax.swing.JLabel();
+        showReportButton = new javax.swing.JButton();
+        spearmanCorelationButton = new javax.swing.JButton();
+        spearmanCorelationText = new javax.swing.JLabel();
+        showDatabaseButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -61,80 +61,80 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Staistics_Spotify");
+        statisticsSpotifyName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        statisticsSpotifyName.setText("Statistics Spotify");
 
-        jButton1.setText("Generate_Report");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        generateReportButton.setText("Generate_Report");
+        generateReportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                generateReportButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Show Most Popular Artist");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        showMostPopularArtistButton.setText("Show Most Popular Artist");
+        showMostPopularArtistButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                showMostPopularArtistButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Show Least Popular Artist");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        showLeastPopularArtistButton.setText("Show Least Popular Artist");
+        showLeastPopularArtistButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                showLeastPopularArtistButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Show Most Popular Song");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        showMostPopularSongButton.setText("Show Most Popular Song");
+        showMostPopularSongButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                showMostPopularSongButtonActionPerformed(evt);
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EU", "NA ", "AS ", "AF", "WorldWide" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        chooseRegionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EU", "NA ", "AS ", "AF", "WorldWide" }));
+        chooseRegionComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                chooseRegionComboBoxActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("\"\"");
+        showMostPopularArtistText.setText("\"\"");
 
-        jLabel3.setText("\"\"");
+        showLeastPopularArtistText.setText("\"\"");
 
-        jLabel4.setText("\"\"");
+        showMostPopularSongText.setText("\"\"");
 
-        jButton5.setText("Show Least Popular Song");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        ShowLeastPopularSongButton.setText("Show Least Popular Song");
+        ShowLeastPopularSongButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                ShowLeastPopularSongButtonActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("\"\"");
+        showLeastPopularSongText.setText("\"\"");
 
-        jButton6.setText("Show Report");
-        jButton6.setActionCommand("Artist Sorter");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        showReportButton.setText("Show Report");
+        showReportButton.setActionCommand("Artist Sorter");
+        showReportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                showReportButtonActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Spearman Corelation");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        spearmanCorelationButton.setText("Spearman Corelation");
+        spearmanCorelationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                spearmanCorelationButtonActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("\"\"");
+        spearmanCorelationText.setText("\"\"");
 
-        jButton8.setText("Show Details About Data");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        showDatabaseButton.setText("Show Details About Data");
+        showDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                showDatabaseButtonActionPerformed(evt);
             }
         });
 
@@ -144,77 +144,79 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(statisticsSpotifyName)
                 .addGap(275, 275, 275))
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(showMostPopularArtistButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(showMostPopularSongButton)
+                        .addComponent(generateReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(showLeastPopularArtistButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(spearmanCorelationButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ShowLeastPopularSongButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chooseRegionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(11, 11, 11))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(showLeastPopularArtistText, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(showMostPopularSongText, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(showLeastPopularSongText)
+                                    .addComponent(showMostPopularArtistText, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 169, Short.MAX_VALUE)))
                         .addGap(29, 29, 29))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(spearmanCorelationText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(showDatabaseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(showReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(27, 27, 27))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(statisticsSpotifyName)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(generateReportButton)
+                    .addComponent(chooseRegionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jLabel2))
+                    .addComponent(showMostPopularArtistButton)
+                    .addComponent(showMostPopularArtistText))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jLabel3))
+                    .addComponent(showLeastPopularArtistButton)
+                    .addComponent(showLeastPopularArtistText))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jLabel4))
+                    .addComponent(showMostPopularSongButton)
+                    .addComponent(showMostPopularSongText))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jLabel5))
+                    .addComponent(ShowLeastPopularSongButton)
+                    .addComponent(showLeastPopularSongText))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7)
-                    .addComponent(jLabel6)
-                    .addComponent(jButton6))
+                    .addComponent(spearmanCorelationButton)
+                    .addComponent(spearmanCorelationText)
+                    .addComponent(showReportButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton8)
+                .addComponent(showDatabaseButton)
                 .addContainerGap(61, Short.MAX_VALUE))
         );
+
+        statisticsSpotifyName.getAccessibleContext().setAccessibleName("Statistics Spotify");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -224,122 +226,124 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
     *
     * @param evt The ActionEvent representing the button click event.
     */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void generateReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateReportButtonActionPerformed
         // TODO add your handling cod
         System.out.println("Button1 Clicked!!");
         theController.generateReportAction();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_generateReportButtonActionPerformed
     /**
     * Handles the action when jButton3 is clicked.
     * It prints a message to the console and calls the showLeastPopular method of the controller to display the least popular artists.
     *
     * @param evt The ActionEvent representing the button click event.
     */
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void showLeastPopularArtistButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showLeastPopularArtistButtonActionPerformed
         // TODO add your handling code here:
         System.out.println("Button3 Clicked!!");
         String text = theController.showLeastPopular();
-        jLabel3.setText(text);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        showLeastPopularArtistText.setText(text);
+    }//GEN-LAST:event_showLeastPopularArtistButtonActionPerformed
     /**
     * Handles the action when jButton2 is clicked.
     * It prints a message to the console and calls the showMostPopular method of the controller to display the most popular artists.
     *
     * @param evt The ActionEvent representing the button click event.
     */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void showMostPopularArtistButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMostPopularArtistButtonActionPerformed
         // TODO add your handling code here:
         System.out.println("Button2 Clicked!!");
         String text = theController.showMostPopular();
-        jLabel2.setText(text);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        showMostPopularArtistText.setText(text);
+    }//GEN-LAST:event_showMostPopularArtistButtonActionPerformed
     /**
     * Handles the action when jButton4 is clicked.
     * It prints a message to the console and calls the showMostSong method of the controller to display the most popular songs.
     *
     * @param evt The ActionEvent representing the button click event.
     */
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void showMostPopularSongButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMostPopularSongButtonActionPerformed
         // TODO add your handling code here:
         System.out.println("Button4 Clicked!!");
         String text = theController.showMostSong();
-        jLabel4.setText(text);
-    }//GEN-LAST:event_jButton4ActionPerformed
+        showMostPopularSongText.setText(text);
+    }//GEN-LAST:event_showMostPopularSongButtonActionPerformed
     /**
     * Handles the action when an item is selected in jComboBox1.
     * It prints a message to the console, and sets the selected region in the controller using the setRegion method.
     *
     * @param evt The ActionEvent representing the item selection event.
     */
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void chooseRegionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseRegionComboBoxActionPerformed
         // TODO add your handling code here:
         System.out.println("ComboBox1 Clicked!!");
-        String selectedRegion = (String) jComboBox1.getSelectedItem();
+        String selectedRegion = (String) chooseRegionComboBox.getSelectedItem();
         theController.setRegion(selectedRegion);
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_chooseRegionComboBoxActionPerformed
     /**
     * Handles the action when jButton5 is clicked.
     * It prints a message to the console, retrieves and displays the least popular songs, and updates jLabel5 with the results.
     *
     * @param evt The ActionEvent representing the button click event.
     */
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void ShowLeastPopularSongButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowLeastPopularSongButtonActionPerformed
         // TODO add your handling code here:
         System.out.println("Button4 Clicked!!");
         String text = theController.showLeastSong();
-        jLabel5.setText(text);
-    }//GEN-LAST:event_jButton5ActionPerformed
+        showLeastPopularSongText.setText(text);
+    }//GEN-LAST:event_ShowLeastPopularSongButtonActionPerformed
     /**
     * Handles the action when jButton7 is clicked.
     * It prints a message to the console, calculates the Spearman's rank correlation coefficient, and updates jLabel6 with the result.
     *
     * @param evt The ActionEvent representing the button click event.
     */
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void spearmanCorelationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spearmanCorelationButtonActionPerformed
         // TODO add your handling code here:
         System.out.println("Button7 Clicked!!");
         double value = theController.showSpearmanKorelation();
         String text = Double.toString(value);
-        jLabel6.setText(text);
-    }//GEN-LAST:event_jButton7ActionPerformed
+        spearmanCorelationText.setText(text);
+    }//GEN-LAST:event_spearmanCorelationButtonActionPerformed
     /**
     * Handles the action when jButton6 is clicked.
     * It prints a message to the console and displays the report using the show_Report method.
     *
     * @param evt The ActionEvent representing the button click event.
     */
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void showReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showReportButtonActionPerformed
         // TODO add your handling code here:
-        System.out.println("Button7 Clicked!!");
+        System.out.println("Button8 Clicked!!");
         theController.show_Report();
         
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_showReportButtonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void showDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDatabaseButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        System.out.println("Button9 Clicked!!");
+        theController.showDatabase();
+    }//GEN-LAST:event_showDatabaseButtonActionPerformed
 
 /**
  * Declaration of GUI components
  */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton ShowLeastPopularSongButton;
+    private javax.swing.JComboBox<String> chooseRegionComboBox;
+    private javax.swing.JButton generateReportButton;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton showDatabaseButton;
+    private javax.swing.JButton showLeastPopularArtistButton;
+    private javax.swing.JLabel showLeastPopularArtistText;
+    private javax.swing.JLabel showLeastPopularSongText;
+    private javax.swing.JButton showMostPopularArtistButton;
+    private javax.swing.JLabel showMostPopularArtistText;
+    private javax.swing.JButton showMostPopularSongButton;
+    private javax.swing.JLabel showMostPopularSongText;
+    private javax.swing.JButton showReportButton;
+    private javax.swing.JButton spearmanCorelationButton;
+    private javax.swing.JLabel spearmanCorelationText;
+    private javax.swing.JLabel statisticsSpotifyName;
     // End of variables declaration//GEN-END:variables
 
 /**
@@ -348,7 +352,7 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
  * @return The JButton with the action jButton1.
  */
 public javax.swing.JButton getJButton1() {
-    return jButton1;
+    return generateReportButton;
 }
 
 /**
@@ -357,7 +361,7 @@ public javax.swing.JButton getJButton1() {
  * @return The JButton with the action jButton2.
  */
 public javax.swing.JButton getJButton2() {
-    return jButton2;
+    return showMostPopularArtistButton;
 }
 
 /**
@@ -366,7 +370,7 @@ public javax.swing.JButton getJButton2() {
  * @return The JButton with the action jButton3.
  */
 public javax.swing.JButton getJButton3() {
-    return jButton3;
+    return showLeastPopularArtistButton;
 }
 
 /**
@@ -375,7 +379,7 @@ public javax.swing.JButton getJButton3() {
  * @return The JButton with the action jButton4.
  */
 public javax.swing.JButton getJButton4() {
-    return jButton4;
+    return showMostPopularSongButton;
 }
 
 /**
@@ -384,7 +388,7 @@ public javax.swing.JButton getJButton4() {
  * @return The JComboBox with the action jComboBox1.
  */
 public javax.swing.JComboBox<String> getJComboBox1() {
-    return jComboBox1;
+    return chooseRegionComboBox;
 }
 
 /**
@@ -393,7 +397,7 @@ public javax.swing.JComboBox<String> getJComboBox1() {
  * @return The JLabel with the action jLabel1.
  */
 public javax.swing.JLabel getJLabel1() {
-    return jLabel1;
+    return statisticsSpotifyName;
 }
 
 }
