@@ -51,7 +51,13 @@ public class ModelStatisticsSpotifyTest {
     public void tearDown() throws Exception {
     }
     
-
+        /**
+        * Test the behavior of the readFile method in the ModelStatisticsSpotify class.
+        * This method reads Spotify statistics data from a specified file and compares it with expected results.
+        *
+        * @param filePath The file path from which Spotify statistics data should be read.
+        * @throws FileNotFoundException If the specified file is not found.
+        */
         @ParameterizedTest
         @ValueSource(strings = {
                 "C://Users//Piotr//source//repos//Java_Projects//Kraska_Piotr_Statystyka_Spotify//testReadFile_filepath.txt",
@@ -99,9 +105,11 @@ public class ModelStatisticsSpotifyTest {
 
 
     /**
-     * Test of saveDataToFile method, of class ModelStatisticsSpotify.
-     * @param filePath
-     */
+    * Test the behavior of the saveDataToFile method in the ModelStatisticsSpotify class.
+    * This method saves Spotify statistics data to a specified file.
+    *
+    * @param filePath The file path where the Spotify statistics data should be saved.
+    */
     @ParameterizedTest
     @ValueSource(strings = {
         "C://Users//Piotr//source//repos//Java_Projects//Kraska_Piotr_Statystyka_Spotify//testReadFile_filepath.txt", 
@@ -133,9 +141,11 @@ public class ModelStatisticsSpotifyTest {
     }
 
     /**
-     * Test of mostPopularArtist method, of class ModelStatisticsSpotify.
-     * @param inputData
-     */
+    * Test the behavior of the mostPopularArtist method in the ModelStatisticsSpotify class.
+    * This method identifies the most popular artist based on the total number of plays for all songs.
+    *
+    * @param inputData The input data for the test, representing statistics for various songs by different artists.
+    */
     @ParameterizedTest
     @ValueSource(strings = {
             "A b c EU 1 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5"
@@ -176,9 +186,11 @@ public class ModelStatisticsSpotifyTest {
     }
 
     /**
-     * Test of leastPopularArtist method, of class ModelStatisticsSpotify.
-     * @param inputData
-     */
+    * Test the behavior of the leastPopularArtist method in the ModelStatisticsSpotify class.
+    * This method identifies the least popular artist based on the total number of plays for all songs.
+    *
+    * @param inputData The input data for the test, representing statistics for various songs by different artists.
+    */
     @ParameterizedTest
     @ValueSource(strings = {
             "A b c EU 1 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5"
@@ -221,9 +233,11 @@ public class ModelStatisticsSpotifyTest {
     }
 
     /**
-     * Test of mostPopularSong method, of class ModelStatisticsSpotify.
-     * @param inputData
-     */
+    * Test the behavior of the mostPopularSong method in the ModelStatisticsSpotify class.
+    * This method identifies the most popular song based on the number of plays.
+    *
+    * @param inputData The input data for the test, representing statistics for various songs in different regions.
+    */
     @ParameterizedTest
     @ValueSource(strings = {
             "A b c EU 1 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5"
@@ -267,9 +281,11 @@ public class ModelStatisticsSpotifyTest {
     }
 
     /**
-     * Test of leastPopularSong method, of class ModelStatisticsSpotify.
-     * @param inputData
-     */
+    * Test the behavior of the leastPopularSong method in the ModelStatisticsSpotify class.
+    * This method identifies the least popular song based on the number of plays.
+    *
+    * @param inputData The input data for the test, representing statistics for various songs in different regions.
+    */
     @ParameterizedTest
     @ValueSource(strings = {
             "A b c EU 1 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5"
@@ -313,9 +329,11 @@ public class ModelStatisticsSpotifyTest {
     }
 
     /**
-     * Test of artistSorter method, of class ModelStatisticsSpotify.
-     * @param inputData
-     */
+    * Test the behavior of the artistSorter method in the ModelStatisticsSpotify class.
+    * This method sorts a list of Spotify statistics based on the number of plays in descending order.
+    *
+    * @param inputData The input data for the test, representing statistics for various songs in different regions.
+    */
     @ParameterizedTest
     @ValueSource(strings = {
             "A b c EU 1 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5"
@@ -352,24 +370,22 @@ public class ModelStatisticsSpotifyTest {
             //System.out.println("testArtistSorter ending process...");
     }
 
-    /**
-     * Test of arithmeticMeanOfListens method, of class ModelStatisticsSpotify.
-     * @param inputData
-     */
+   /**
+    * Test the behavior of the arithmeticMeanOfListens method in the ModelStatisticsSpotify class.
+    * This method calculates the arithmetic mean of the number of listens for a list of Spotify statistics.
+    *
+    * @param inputData The input data for the test, representing statistics for various songs in different regions.
+    */
     @ParameterizedTest
     @ValueSource(strings = {
             "A b c EU 3 1.0, X Y Z NA 5 3.5, P Q R AS 10 2.5"
     })
     public void testArithmeticMeanOfListens(String inputData) {
     //System.out.println("testArithmeticMeanOfListens is running...");
-
-        // Split the input data into individual artists
         String[] artistDataList = inputData.split(", ");
         List<ModelStatisticsSpotify> spotifystatslist = new ArrayList<>();
 
         for (String artistData : artistDataList) {
-            // Process each artist data as a separate test case
-            //System.out.println("Processing input: " + artistData);
 
             String[] data = artistData.split(" ");
             ModelStatisticsSpotify stats = new ModelStatisticsSpotify();
@@ -384,22 +400,20 @@ public class ModelStatisticsSpotifyTest {
         }
 
         ModelStatisticsSpotify instance = new ModelStatisticsSpotify();
-
-        // Manually calculate the expected result based on the input data
-        int expResult = (3 + 5 + 10) / 3; // Expected mean of listens
+        int expResult = (3 + 5 + 10) / 3; 
 
         int result = instance.arithmeticMeanOfListens(spotifystatslist);
-
-        // Adjust the assertions based on the expected result
         assertEquals(expResult, result);
 
         //System.out.println("testArithmeticMeanOfListens ending process...");
     }
 
-    /**
-     * Test of spearmanKorelation method, of class ModelStatisticsSpotify.
-     * @param inputData
-     */
+   /**
+    * Test the behavior of the spearmanKorelation method in the ModelStatisticsSpotify class.
+    * This method calculates the Spearman correlation coefficient based on input statistics for various songs and regions.
+    *
+    * @param inputData The input data for the test, representing statistics for various songs in different regions.
+    */
     @ParameterizedTest
     @ValueSource(strings = {
     """
@@ -450,10 +464,12 @@ public class ModelStatisticsSpotifyTest {
     }
 
     /**
-     * Test of generateReport method, of class ModelStatisticsSpotify.
-     * @param inputData
-     * @throws java.io.IOException
-     */
+    * Test the behavior of the generateReport method in the ModelStatisticsSpotify class.
+    * This method tests the generation of a report based on input statistics for different songs in various regions.
+    *
+    * @param inputData The input data for the test, representing statistics for various songs in different regions.
+    * @throws IOException If an I/O error occurs while generating the report.
+    */
     @ParameterizedTest
     @ValueSource(strings = {
     """
@@ -500,11 +516,13 @@ public class ModelStatisticsSpotifyTest {
     }
 
     /**
-     * Test of setStatSpotify method, of class ModelStatisticsSpotify.
-     * @param reg
-     * @param input
-     * @param expected
-     */
+    * Test the behavior of the setStatSpotify method in the ModelStatisticsSpotify class.
+    * This method is parameterized to test different regions (reg) and their corresponding input and expected results.
+    *
+    * @param reg      The region for which the setStatSpotify method is tested.
+    * @param input    The input data for the test, representing statistics for various songs in different regions.
+    * @param expected The expected result after applying the setStatSpotify method to the input data for the specified region.
+    */
    @ParameterizedTest
     @CsvSource({
         // Test when reg is "EU"
