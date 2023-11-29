@@ -1,0 +1,20 @@
+Report from AF
+
+Author/s with the most listens: 
+Author: Don Omar  Number of listens: 900000
+
+Author/s with least listens: 
+Author: Gibbs Kielas  Number of listens: 1750
+
+Song with most listens: 
+Author: Don Omar  Number of listens: 900000 Region: AF
+
+Song with least listens: 
+Author: Gibbs Kielas  Number of listens: 1750 Region: AF
+
+Arithmetic mean of listens: 275437
+Sorted list:
+Don Omar DanzaKuduro AF 900000 3.27
+Ed Sheeran ShapeOfYou AF 100000 3.53
+X Ambassadors Renegades AF 100000 3.13
+Gibbs Kielas PieknySwiat AF 1750 3.57

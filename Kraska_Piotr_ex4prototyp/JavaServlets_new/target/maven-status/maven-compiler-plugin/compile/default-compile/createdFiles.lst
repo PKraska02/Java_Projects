@@ -1,0 +1,6 @@
+pl\polsl\lab\servlets\ShowReportServlet.class
+pl\polsl\lab\Model_package\ModelStatisticsSpotify.class
+pl\polsl\lab\Model_package\IntegerDoublePair.class
+pl\polsl\lab\Model_package\StringDoublePair.class
+pl\polsl\lab\servlets\ShowDatabaseServlet.class
+pl\polsl\lab\servlets\StatisticsSpotifyServlet.class

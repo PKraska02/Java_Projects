@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Statistics Spotify</title>
+</head>
+<body>
+    <div class="menu">
+        <h2>Statistics Spotify</h2>
+        <form action="StatisticsSpotifyServlet" method="post">
+            <label>Generate Report:</label>
+            <button type="submit" name="action" value="generateReport">Generate Report</button>
+            <hr>
+            Show Most Popular Artist:
+            <button type="submit" name="action" value="mostPopularArtist">Show Most Popular Artist</button>
+            <hr>
+            <label>Show Least Popular Artist:</label>
+            <button type="submit" name="action" value="leastPopularArtist">Show Least Popular Artist</button>
+            <hr>
+            <label>Show Most Popular Song:</label>
+            <button type="submit" name="action" value="mostPopularSong">Show Most Popular Song</button>
+            <hr>
+            <label>Show Least Popular Song:</label>
+            <button type="submit" name="action" value="leastPopularSong">Show Least Popular Song</button>
+            <hr>
+            <label>Spearman Correlation:</label>
+            <button type="submit" name="action" value="spearmanCorrelation">Spearman Correlation</button>
+            <hr>
+            <label>Show Report:</label>
+            <button type="submit" name="action" value="showReport">Show Report</button>
+            <hr>
+            <label>Show Details About Data:</label>
+            <button type="submit" name="action" value="showDetails">Show Details About Data</button>
+            <hr>
+        </form>
+    </div>
+</body>
+</html>
+

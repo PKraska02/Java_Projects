@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+/**
+ * A view for displaying reports.
+ * @author Piotr
+ * @version 2.0
+ */
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display File Data</title>
+</head>
+<body>
+    <h2>File Data:</h2>
+    <pre id="fileData"></pre>
+
+    <script>
+        // Function to read file content
+        function readFileContent() {
+            // Assuming the file is named 'example.txt'
+            const fileName = 'example.txt';
+
+            // Create a new FileReader
+            const reader = new FileReader();
+
+            // Define the function to execute when the file is successfully read
+            reader.onload = function (event) {
+                // Display the content of the file in the 'fileData' pre element
+                document.getElementById('fileData').textContent = event.target.result;
+            };
+
+            // Define the function to execute in case of an error
+            reader.onerror = function (event) {
+                console.error("Error reading the file: ", event.target.error);
+            };
+
+            // Read the file asynchronously
+            reader.readAsText(fileName);
+        }
+
+        // Call the function to read file content when the page loads
+        window.onload = readFileContent;
+    </script>
+</body>
+</html>
+
