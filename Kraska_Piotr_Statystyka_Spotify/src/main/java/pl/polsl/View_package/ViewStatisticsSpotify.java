@@ -21,6 +21,26 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
     public ViewStatisticsSpotify(ControllerStatisticsSpotify theController){
         this.theController = theController;
         initComponents();
+        generateReportButton.setToolTipText("Generate a statistics report \n Shortcut: ALT+G");
+        showMostPopularArtistButton.setToolTipText("Show the most popular artist \n Shortcut: ALT+M");
+        showLeastPopularArtistButton.setToolTipText("Show the least popular artist \n Shortcut: ALT+L");
+        showMostPopularSongButton.setToolTipText("Show the most popular song \n Shortcut: ALT+S");
+        ShowLeastPopularSongButton.setToolTipText("Show the least popular song \n Shortcut: ALT+E");
+        spearmanCorelationButton.setToolTipText("Calculate Spearman Correlation \n Shortcut: ALT+C");
+        showReportButton.setToolTipText("Show the report \n Shortcut: ALT+R");
+        showDatabaseButton.setToolTipText("Show details about data \n Shortcut: ALT+D");
+        chooseRegionComboBox.setToolTipText("Choose the region");
+        statisticsSpotifyName.setToolTipText("Statistics Spotify");
+        //mnemonic
+        generateReportButton.setMnemonic('G');
+        showMostPopularArtistButton.setMnemonic('M');
+        showLeastPopularArtistButton.setMnemonic('L');
+        showMostPopularSongButton.setMnemonic('S');
+        ShowLeastPopularSongButton.setMnemonic('E');
+        spearmanCorelationButton.setMnemonic('C');
+        showReportButton.setMnemonic('R');
+        showDatabaseButton.setMnemonic('D');
+
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -228,7 +248,6 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
     */
     private void generateReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateReportButtonActionPerformed
         // TODO add your handling cod
-        System.out.println("Button1 Clicked!!");
         theController.generateReportAction();
 
     }//GEN-LAST:event_generateReportButtonActionPerformed
@@ -240,7 +259,6 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
     */
     private void showLeastPopularArtistButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showLeastPopularArtistButtonActionPerformed
         // TODO add your handling code here:
-        System.out.println("Button3 Clicked!!");
         String text = theController.showLeastPopular();
         showLeastPopularArtistText.setText(text);
     }//GEN-LAST:event_showLeastPopularArtistButtonActionPerformed
@@ -252,7 +270,6 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
     */
     private void showMostPopularArtistButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMostPopularArtistButtonActionPerformed
         // TODO add your handling code here:
-        System.out.println("Button2 Clicked!!");
         String text = theController.showMostPopular();
         showMostPopularArtistText.setText(text);
     }//GEN-LAST:event_showMostPopularArtistButtonActionPerformed
@@ -264,7 +281,6 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
     */
     private void showMostPopularSongButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMostPopularSongButtonActionPerformed
         // TODO add your handling code here:
-        System.out.println("Button4 Clicked!!");
         String text = theController.showMostSong();
         showMostPopularSongText.setText(text);
     }//GEN-LAST:event_showMostPopularSongButtonActionPerformed
@@ -276,7 +292,6 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
     */
     private void chooseRegionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseRegionComboBoxActionPerformed
         // TODO add your handling code here:
-        System.out.println("ComboBox1 Clicked!!");
         String selectedRegion = (String) chooseRegionComboBox.getSelectedItem();
         theController.setRegion(selectedRegion);
     }//GEN-LAST:event_chooseRegionComboBoxActionPerformed
@@ -288,7 +303,6 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
     */
     private void ShowLeastPopularSongButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowLeastPopularSongButtonActionPerformed
         // TODO add your handling code here:
-        System.out.println("Button4 Clicked!!");
         String text = theController.showLeastSong();
         showLeastPopularSongText.setText(text);
     }//GEN-LAST:event_ShowLeastPopularSongButtonActionPerformed
@@ -300,7 +314,6 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
     */
     private void spearmanCorelationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spearmanCorelationButtonActionPerformed
         // TODO add your handling code here:
-        System.out.println("Button7 Clicked!!");
         double value = theController.showSpearmanKorelation();
         String text = Double.toString(value);
         spearmanCorelationText.setText(text);
@@ -313,14 +326,12 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
     */
     private void showReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showReportButtonActionPerformed
         // TODO add your handling code here:
-        System.out.println("Button8 Clicked!!");
         theController.show_Report();
         
     }//GEN-LAST:event_showReportButtonActionPerformed
 
     private void showDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDatabaseButtonActionPerformed
         // TODO add your handling code here:
-        System.out.println("Button9 Clicked!!");
         theController.showDatabase();
     }//GEN-LAST:event_showDatabaseButtonActionPerformed
 

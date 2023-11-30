@@ -25,7 +25,8 @@ public class ShowDatabase extends javax.swing.JFrame{
      */
     public ShowDatabase() {
         initComponents();
-        
+        cancelButton.setToolTipText("Quit the window \n Shortcut: ALT+G");
+        cancelButton.setMnemonic('G');
     }
     /**
      * This method is called from within the constructor to initialize the form.

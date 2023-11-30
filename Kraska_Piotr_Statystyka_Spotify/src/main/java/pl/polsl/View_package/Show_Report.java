@@ -19,7 +19,8 @@ public class Show_Report extends javax.swing.JFrame {
      */
     public Show_Report() {
         initComponents();
-        
+        cancelButton.setToolTipText("Quit the window \n Shortcut: ALT+G");
+        cancelButton.setMnemonic('G');
     }
 
     /**

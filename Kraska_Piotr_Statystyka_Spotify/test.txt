@@ -1,12 +1,20 @@
-Report from 
+Report from AS 
 
 Author/s with the most listens: 
+Author: Ed Sheeran  Number of listens: 5000000
 
 Author/s with least listens: 
+Author: Gibbs Kielas  Number of listens: 2500
 
 Song with most listens: 
+Author: Ed Sheeran  Number of listens: 5000000 Region: AS
 
 Song with least listens: 
+Author: Gibbs Kielas  Number of listens: 2500 Region: AS
 
-Arithmetic mean of listens: 0
+Arithmetic mean of listens: 1413125
 Sorted list:
+Ed Sheeran ShapeOfYou AS 5000000 3.53
+Don Omar DanzaKuduro AS 600000 3.27
+X Ambassadors Renegades AS 50000 3.13
+Gibbs Kielas PieknySwiat AS 2500 3.57

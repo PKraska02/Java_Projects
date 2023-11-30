@@ -12,6 +12,7 @@ import java.util.List;
 import java.io.FileNotFoundException;
 import java.util.Map;
 import pl.polsl.View_package.ShowDatabase;
+import javax.swing.JOptionPane;
 /**
  *
  * 
@@ -83,11 +84,10 @@ public class ControllerStatisticsSpotify {
                     List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
         this.model.generateReport(temp2, filePath, region);
         }
-        catch(FileNotFoundException e){
-            System.out.println(e);
-            }
-        catch(IOException ex){
-            System.out.println(ex);
+        catch (FileNotFoundException e) {
+        showErrorDialog("File not found: " + e.getMessage());
+        } catch (IOException ex) {
+            showErrorDialog("An error occurred while processing the file: " + ex.getMessage());
         }
     }
     /**
@@ -103,17 +103,15 @@ public class ControllerStatisticsSpotify {
 
         try {
             List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
-            System.out.println(region);
             List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
             mpArtist = this.model.mostPopularArtist(temp2);
             for (Map.Entry<String, Integer> entry : mpArtist) {
                 result.append("Author: ").append(entry.getKey()).append("  Number of listens: ").append(entry.getValue()).append("\n");
-                System.out.println(result);
             }
         } catch (FileNotFoundException e) {
-            System.out.println(e);
+            showErrorDialog("File not found: " + e.getMessage());
         } catch (IOException ex) {
-            System.out.println(ex);
+            showErrorDialog("An error occurred while processing the file: " + ex.getMessage());
         }
 
         return result.toString();
@@ -136,10 +134,12 @@ public class ControllerStatisticsSpotify {
             for (Map.Entry<String, Integer> entry : lpArtist) {
                 result.append("Author: ").append(entry.getKey()).append("  Number of listens: ").append(entry.getValue()).append("\n");
             }
-        } catch (FileNotFoundException e) {
-            System.out.println(e);
-        } catch (IOException ex) {
-            System.out.println(ex);
+        } 
+        catch (FileNotFoundException e) {
+        showErrorDialog("File not found: " + e.getMessage());
+        } 
+        catch (IOException ex) {
+            showErrorDialog("An error occurred while processing the file: " + ex.getMessage());
         }
 
         return result.toString();
@@ -174,11 +174,10 @@ public class ControllerStatisticsSpotify {
                 System.out.println(result);
             }
         } catch (FileNotFoundException e) {
-            System.out.println(e);
+            showErrorDialog("File not found: " + e.getMessage());
         } catch (IOException ex) {
-            System.out.println(ex);
+            showErrorDialog("An error occurred while processing the file: " + ex.getMessage());
         }
-
         return result.toString();
     }
     /**
@@ -202,9 +201,9 @@ public class ControllerStatisticsSpotify {
                 System.out.println(result);
             }
         } catch (FileNotFoundException e) {
-            System.out.println(e);
+        showErrorDialog("File not found: " + e.getMessage());
         } catch (IOException ex) {
-            System.out.println(ex);
+            showErrorDialog("An error occurred while processing the file: " + ex.getMessage());
         }
 
         return result.toString();
@@ -223,9 +222,9 @@ public class ControllerStatisticsSpotify {
             result = this.model.spearmanKorelation(temp2);
             }
         catch (FileNotFoundException e) {
-            System.out.println(e);
+        showErrorDialog("File not found: " + e.getMessage());
         } catch (IOException ex) {
-            System.out.println(ex);
+            showErrorDialog("An error occurred while processing the file: " + ex.getMessage());
         }
 
         return result;
@@ -245,5 +244,8 @@ public class ControllerStatisticsSpotify {
         this.database.setVisible(true);
         this.database.displayDatabaseContents(filePath2);
     }
+    private void showErrorDialog(String errorMessage) {
+    JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
+}
 
 } 
