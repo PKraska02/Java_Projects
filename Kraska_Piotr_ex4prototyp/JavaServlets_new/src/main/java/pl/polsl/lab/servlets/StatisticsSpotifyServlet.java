@@ -28,7 +28,7 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     //private final HtmlViewStatisticsSpotify view;
     //private final HtmlShowReport report;
     //private final ShowDatabaseHtml database;
-    private final String filePath = "C:/Users/Piotr/Downloads/Kraska_Piotr_ex4prototyp/JavaServlets_new/generatedReport.txt";
+    private final String filePath = "C:/Users/Piotr/source/repos/Java_Projects/Kraska_Piotr_ex4prototyp/JavaServlets_new/generatedReport.txt";
     private final String filePath2 = "C:/Users/Piotr/source/repos/Java_Projects/Kraska_Piotr_Statystyka_Spotify/SpotifyStatsDatabase.txt";
     private String region = "";
 

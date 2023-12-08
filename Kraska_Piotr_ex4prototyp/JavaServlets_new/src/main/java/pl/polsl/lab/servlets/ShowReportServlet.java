@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/ShowReportServlet")
 public class ShowReportServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private final String filePath = "C:/Users/Piotr/Downloads/Kraska_Piotr_ex4prototyp/JavaServlets_new/generatedReport.txt";
+    private final String filePath = "C:/Users/Piotr/source/repos/Java_Projects/Kraska_Piotr_ex4prototyp/JavaServlets_new/generatedReport.txt";
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
