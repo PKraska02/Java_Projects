@@ -1,17 +1,17 @@
-package pl.polsl.Controller_package;
+package pl.polsl.controllerpackage;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-import pl.polsl.Model_package.ModelStatisticsSpotify;
-import pl.polsl.View_package.ViewStatisticsSpotify;
-import pl.polsl.View_package.Show_Report;
+import pl.polsl.modelpackage.ModelStatisticsSpotify;
+import pl.polsl.viewpackage.ViewStatisticsSpotify;
+import pl.polsl.viewpackage.ShowReport;
 import java.io.IOException;
 import java.util.List;
 import java.io.FileNotFoundException;
 import java.util.Map;
-import pl.polsl.View_package.ShowDatabase;
+import pl.polsl.viewpackage.ShowDatabase;
 import javax.swing.JOptionPane;
 /**
  *
@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * ControllerStatisticsSpotify class is responsible for controlling the flow of data
  * and interactions between the ModelStatisticsSpotify and ViewStatisticsSpotify classes.
  * @author Piotr
- * @version 1.0
+ * @version 3.0
  */
 public class ControllerStatisticsSpotify {
      /**
@@ -33,9 +33,9 @@ public class ControllerStatisticsSpotify {
     private final ViewStatisticsSpotify view;
     
     /**
-     * An instance of the Show_Report class for generating reports.
+     * An instance of the ShowReport class for generating reports.
      */
-    private final Show_Report report;
+    private final ShowReport report;
     
     /**
      * An instance of the ShowDatabase class for generating reports.
@@ -68,7 +68,7 @@ public class ControllerStatisticsSpotify {
      */
     public ControllerStatisticsSpotify() {
         this.view = new ViewStatisticsSpotify(this);
-        this.report = new Show_Report();
+        this.report = new ShowReport();
         this.database = new ShowDatabase();
         this.view.setVisible(true);
     }
@@ -232,7 +232,7 @@ public class ControllerStatisticsSpotify {
     /**
     * Displays the report by making the report window visible and loading the report content from a file.
     */
-    public void show_Report(){
+    public void showReport(){
         this.report.setVisible(true);
         this.report.displayFileContents(filePath);
         
@@ -244,8 +244,12 @@ public class ControllerStatisticsSpotify {
         this.database.setVisible(true);
         this.database.displayDatabaseContents(filePath2);
     }
+    /**
+     * Method show error message
+     * @param errorMessage 
+     */
     private void showErrorDialog(String errorMessage) {
-    JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
-}
+        JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
+    }
 
 } 

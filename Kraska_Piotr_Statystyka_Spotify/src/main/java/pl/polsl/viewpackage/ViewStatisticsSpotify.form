@@ -144,9 +144,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Statistics Spotify"/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Statistics Spotify"/>
-      </AccessibilityProperties>
     </Component>
     <Component class="javax.swing.JButton" name="generateReportButton">
       <Properties>

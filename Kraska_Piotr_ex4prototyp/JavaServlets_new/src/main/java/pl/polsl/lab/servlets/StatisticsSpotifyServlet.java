@@ -7,19 +7,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import pl.polsl.lab.Model_package.ModelStatisticsSpotify;
-//import pl.polsl.View_package.HtmlShowReport;
 import java.io.IOException;
 import java.util.List;
 import java.io.FileNotFoundException;
-//import java.io.PrintWriter;
 import java.util.Map;
-//import pl.polsl.View_package.ShowDatabaseHtml;
 
 /**
  * StatisticsSpotifyServlet class is responsible for controlling the flow of data
  * and interactions between the ModelStatisticsSpotify and index.html website .
  * @author Piotr
- * @version 2.0
+ * @version 3.0
  */
 @WebServlet("/StatisticsSpotifyServlet")
 public class StatisticsSpotifyServlet extends HttpServlet{
@@ -31,12 +28,13 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     private final String filePath = "C:/Users/Piotr/source/repos/Java_Projects/Kraska_Piotr_ex4prototyp/JavaServlets_new/generatedReport.txt";
     private final String filePath2 = "C:/Users/Piotr/source/repos/Java_Projects/Kraska_Piotr_Statystyka_Spotify/SpotifyStatsDatabase.txt";
     private String region = "";
-
+    
+    private ModelStatisticsSpotify getModelInstance() {
+        return ModelStatisticsSpotify.getInstance();
+    }
     public StatisticsSpotifyServlet() {
-        this.model = new ModelStatisticsSpotify();
-        //this.view = new HtmlViewStatisticsSpotify();
-        //this.report = new HtmlShowReport();
-        //this.database = new ShowDatabaseHtml();
+        this.model = getModelInstance();
+
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,7 +42,7 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     String action = request.getParameter("action");
     String selectedContinent = request.getParameter("continent");
     region = selectedContinent;
-    System.out.println("Selected Region: " + region);
+    //System.out.println("Selected Region: " + region);
 
 
         if (action != null) {
@@ -73,48 +71,49 @@ public class StatisticsSpotifyServlet extends HttpServlet{
                 default:
                     break;
             }
+        model.addToCalculationHistory("Action: " + action + ", Result: " + result);
         updateViewWithResult(result, request, response);
     }
     response.getWriter().close();
 }
 
     public void generateReportAction() {
-        System.out.println("IF IN 0.");
+        //System.out.println("IF IN 0.");
         try {
             List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
             List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
             this.model.generateReport(temp2, filePath, region);
         } catch (FileNotFoundException e) {
-            System.out.println(e);
+            //System.out.println(e);
         } catch (IOException ex) {
-            System.out.println(ex);
+            //System.out.println(ex);
         }
     }
 
     public String showMostPopular() {
         List<Map.Entry<String, Integer>> mpArtist = null;
         StringBuilder result = new StringBuilder();
-            System.out.println("IF IN 1.");
+            //System.out.println("IF IN 1.");
         try {
-            System.out.println("Before reading file.");
+            //System.out.println("Before reading file.");
             List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
-            System.out.println("After reading file. Temp size: " + temp.size());
+            //System.out.println("After reading file. Temp size: " + temp.size());
 
-            System.out.println("Before setting Spotify stats.");
+            //System.out.println("Before setting Spotify stats.");
             List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
-            System.out.println("After setting Spotify stats. Temp2 size: " + temp2.size());
+            //System.out.println("After setting Spotify stats. Temp2 size: " + temp2.size());
 
             mpArtist = this.model.mostPopularArtist(temp2);
             for (Map.Entry<String, Integer> entry : mpArtist) {
                 result.append("Author: ").append(entry.getKey()).append("  Number of listens: ").append(entry.getValue()).append("\n");
-                System.out.println("The result"+result);
+                //System.out.println("The result"+result);
             }
         } catch (FileNotFoundException e) {
-            System.out.println(e);
+            //System.out.println(e);
         } catch (IOException ex) {
-            System.out.println(ex);
+            //System.out.println(ex);
         }
-        System.out.println(result.toString());
+        //System.out.println(result.toString());
         return result.toString();
     }
 
@@ -123,24 +122,24 @@ public class StatisticsSpotifyServlet extends HttpServlet{
         StringBuilder result = new StringBuilder();
 
         try {
-            System.out.println("Before reading file.");
+            //System.out.println("Before reading file.");
             List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
-            System.out.println("After reading file. Temp size: " + temp.size());
+            //System.out.println("After reading file. Temp size: " + temp.size());
 
-            System.out.println("Before setting Spotify stats.");
+            //System.out.println("Before setting Spotify stats.");
             List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
-            System.out.println("After setting Spotify stats. Temp2 size: " + temp2.size());
+            //System.out.println("After setting Spotify stats. Temp2 size: " + temp2.size());
 
             lpArtist = this.model.leastPopularArtist(temp2);
             for (Map.Entry<String, Integer> entry : lpArtist) {
                 result.append("Author: ").append(entry.getKey()).append("  Number of listens: ").append(entry.getValue()).append("\n");
             }
         } catch (FileNotFoundException e) {
-            System.out.println(e);
+            //System.out.println(e);
         } catch (IOException ex) {
-            System.out.println(ex);
+            //System.out.println(ex);
         }
-        System.out.println(result);
+        //System.out.println(result);
         return result.toString();
     }
 
@@ -163,11 +162,11 @@ public class StatisticsSpotifyServlet extends HttpServlet{
                         .append("\n");
             }
         } catch (FileNotFoundException e) {
-            System.out.println(e);
+            //System.out.println(e);
         } catch (IOException ex) {
-            System.out.println(ex);
+            //System.out.println(ex);
         }
-        System.out.println(result);
+        //System.out.println(result);
         return result.toString();
     }
 
@@ -183,14 +182,14 @@ public class StatisticsSpotifyServlet extends HttpServlet{
                 result.append("Author: ").append(entry.getAuthorName()).append(entry.getAuthorLastName())
                         .append("  Number of Listens: ").append(entry.getPlaysCount())
                         .append("\n");
-                System.out.println(result);
+                //System.out.println(result);
             }
         } catch (FileNotFoundException e) {
-            System.out.println(e);
+            //System.out.println(e);
         } catch (IOException ex) {
-            System.out.println(ex);
+            //System.out.println(ex);
         }
-        System.out.println(result);
+        //System.out.println(result);
         return result.toString();
     }
 
@@ -219,11 +218,12 @@ public class StatisticsSpotifyServlet extends HttpServlet{
         result = "Error: Result is null.";
         }
         request.setAttribute("result", result);
-        System.out.println("Before forwarding to JSP");
+        //System.out.println("Before forwarding to JSP");
         RequestDispatcher dispatcher = request.getRequestDispatcher("showData.jsp");
         dispatcher.forward(request, response);
-        System.out.println("After forwarding to JSP");
+        //System.out.println("After forwarding to JSP");
     }
+    
 
 }
 

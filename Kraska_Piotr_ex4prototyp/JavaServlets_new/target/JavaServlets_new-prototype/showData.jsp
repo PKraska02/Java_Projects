@@ -60,8 +60,13 @@
             <form action="ShowDatabaseServlet" method="post">
             <label>Show Details About Data:</label>
             <button type="submit" name="action" value="showDetails">Show Details About Data</button>
+            </form>
             <hr>
-
+            <form action="HistoryServlet" method="post">
+            <label>Check History:</label>
+            <button type="submit" name="action" value="history">Show History</button>
+            <hr>
+            </form>
             <!--
             <script>
                 function disableComboBox() {
@@ -70,7 +75,6 @@
                 }
             </script>
             -->
-            </form>
     </div>
             <!-- Add the output element to display the result -->
             Result:

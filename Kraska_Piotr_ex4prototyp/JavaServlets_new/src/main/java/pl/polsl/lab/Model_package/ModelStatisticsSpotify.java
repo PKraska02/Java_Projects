@@ -22,7 +22,7 @@ import java.util.Comparator;
  * This class represents the data model for Spotify statistics.
  * It contains methods to read and process statistics data.
  * @author Piotr
- * @version 2.0
+ * @version 3.0
  */
 public class ModelStatisticsSpotify {
     /**
@@ -51,6 +51,27 @@ public class ModelStatisticsSpotify {
      * The number of listens for the song.
      */
     private double songTime = 0;
+    /**
+     * The list that stored data abuot calculations
+     * @param calculationHistory
+     */
+    private final List<String> calculationHistory = new ArrayList<>();
+    /**
+    * Create static instance of the ModelStatisticsSpotify object
+    */
+    private static ModelStatisticsSpotify instance;
+
+    /**
+    * Static method to get the singleton instance
+    * method must be static for correct program working
+     * @return instance
+    */
+       public static ModelStatisticsSpotify getInstance() {
+        if (instance == null) {
+            instance = new ModelStatisticsSpotify();
+        }
+        return instance;
+       }
     /**
     * Reads the contents of a file and populates a List of Spotify statistics.
     *
@@ -684,10 +705,24 @@ public class ModelStatisticsSpotify {
 
         return substatspotifylist;
     }
-    
-    
-    
     /**
+    * Adds an entry to the calculation history.
+    *
+    * @param entry The entry to be added to the calculation history.
+    */
+    public void addToCalculationHistory(String entry) {
+        calculationHistory.add(entry);
+    }
+    /**
+    * Retrieves the calculation history.
+    *
+    * @return The list containing the calculation history entries.
+    */
+    public List<String> getCalculationHistory() {
+        return calculationHistory;
+    }
+    
+ /**
  * Get the author's first name.
  *
  * @return The author's first name.

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package pl.polsl.View_package;
+package pl.polsl.viewpackage;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,12 +12,12 @@ import java.io.IOException;
  * @author Piotr
  * @version 1.0
  */
-public class Show_Report extends javax.swing.JFrame {
+public class ShowReport extends javax.swing.JFrame {
 
     /**
      * Creates new form Show_Report
      */
-    public Show_Report() {
+    public ShowReport() {
         initComponents();
         cancelButton.setToolTipText("Quit the window \n Shortcut: ALT+G");
         cancelButton.setMnemonic('G');

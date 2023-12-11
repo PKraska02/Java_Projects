@@ -24,12 +24,13 @@ import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import pl.polsl.modelpackage.ModelStatisticsSpotify;
 
 
 /**
  *
  * @author Piotr
- * @version 1.0
+ * @version 2.0
  */
 public class ModelStatisticsSpotifyTest {
     
@@ -79,29 +80,27 @@ public class ModelStatisticsSpotifyTest {
             expResult.add(suggestInstance);
 
             if (filePath == null || filePath.trim().isEmpty()) {
-                assertThrows(FileNotFoundException.class, () -> instance.readFile(filePath));
+            assertThrows(FileNotFoundException.class, () -> instance.readFile(filePath), "For null or empty filePath, expect FileNotFoundException");
             } else if (!Files.exists(Paths.get(filePath.trim()))) {
-                assertThrows(FileNotFoundException.class, () -> {
-                instance.readFile(filePath);
-                });       
+            assertThrows(FileNotFoundException.class, () -> instance.readFile(filePath), "For non-existing file, expect FileNotFoundException");
             } else {
-                List<ModelStatisticsSpotify> result = instance.readFile(filePath);
-                assertEquals(expResult.size(), result.size());
-                for (int i = 0; i < expResult.size(); i++) {
-                    ModelStatisticsSpotify expectedModel = expResult.get(i);
-                    ModelStatisticsSpotify actualModel = result.get(i);
+            List<ModelStatisticsSpotify> result = instance.readFile(filePath);
+            assertEquals(expResult.size(), result.size(), "Expected and actual result size should be equal");
+            for (int i = 0; i < expResult.size(); i++) {
+                ModelStatisticsSpotify expectedModel = expResult.get(i);
+                ModelStatisticsSpotify actualModel = result.get(i);
 
-                    // Compare individual attributes
-                    assertEquals(expectedModel.getAuthorName(), actualModel.getAuthorName());
-                    assertEquals(expectedModel.getAuthorLastName(), actualModel.getAuthorLastName());
-                    assertEquals(expectedModel.getTitle(), actualModel.getTitle());
-                    assertEquals(expectedModel.getContinent(), actualModel.getContinent());
-                    assertEquals(expectedModel.getPlaysCount(), actualModel.getPlaysCount());
-                    assertEquals(expectedModel.getSongTime(), actualModel.getSongTime());
-                }
+                // Compare individual attributes
+                assertEquals(expectedModel.getAuthorName(), actualModel.getAuthorName(), "AuthorName should match");
+                assertEquals(expectedModel.getAuthorLastName(), actualModel.getAuthorLastName(), "AuthorLastName should match");
+                assertEquals(expectedModel.getTitle(), actualModel.getTitle(), "Title should match");
+                assertEquals(expectedModel.getContinent(), actualModel.getContinent(), "Continent should match");
+                assertEquals(expectedModel.getPlaysCount(), actualModel.getPlaysCount(), "PlaysCount should match");
+                assertEquals(expectedModel.getSongTime(), actualModel.getSongTime(), "SongTime should match");
             }
-            //System.out.println("testReadFile ending process...");
         }
+            //System.out.println("testReadFile ending process...");
+    }
 
 
     /**
@@ -131,7 +130,7 @@ public class ModelStatisticsSpotifyTest {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line = reader.readLine();
-            assertEquals("A b c EU 1 1.0", line); // Adjust this based on your actual file format
+            assertEquals("A b c EU 1 1.0", line, "Saved data in the file should match the expected line");
         } catch (IOException e) {
             e.printStackTrace();
             fail("IOException occurred while reading the file.");
@@ -179,7 +178,7 @@ public class ModelStatisticsSpotifyTest {
             List<Map.Entry<String, Integer>> result = instance.mostPopularArtist(spotifystatslist);
 
             // Adjust the assertions based on the expected result
-            assertEquals(expResult, result);
+            assertEquals(expResult, result, "Most popular artist should match the expected result");
 
 
         //System.out.println("testMostPopularArtist ending process...");
@@ -226,7 +225,7 @@ public class ModelStatisticsSpotifyTest {
             List<Map.Entry<String, Integer>> result = instance.leastPopularArtist(spotifystatslist);
 
             // Adjust the assertions based on the expected result
-            assertEquals(expResult, result);
+            assertEquals(expResult, result,"Least popular artist should match the expected result");
 
 
         //System.out.println("testLeastPopularArtist ending process...");
@@ -274,7 +273,7 @@ public class ModelStatisticsSpotifyTest {
             result.add(new AbstractMap.SimpleEntry<>(songName, playsCount));
             }
 
-            assertEquals(expResult, result);
+            assertEquals(expResult, result,"Most popular song should match the expected result");
 
 
         //System.out.println("testMostPopularSong ending process...");
@@ -322,7 +321,7 @@ public class ModelStatisticsSpotifyTest {
             result.add(new AbstractMap.SimpleEntry<>(songName, playsCount));
             }
 
-            assertEquals(expResult, result);
+            assertEquals(expResult, result,"Least popular song should match the expected result");
 
 
         //System.out.println("testLeastPopularSong ending process...");
@@ -365,7 +364,7 @@ public class ModelStatisticsSpotifyTest {
             List<ModelStatisticsSpotify> expResult = new ArrayList<>(spotifystatslist);
             expResult.sort(Comparator.comparingInt(ModelStatisticsSpotify::getPlaysCount).reversed());
             List<ModelStatisticsSpotify> result = instance.artistSorter(spotifystatslist);
-            assertEquals(expResult, result);
+            assertEquals(expResult, result,"Sorted exprected list should be the same as result sorted list");
 
             //System.out.println("testArtistSorter ending process...");
     }
@@ -403,7 +402,7 @@ public class ModelStatisticsSpotifyTest {
         int expResult = (3 + 5 + 10) / 3; 
 
         int result = instance.arithmeticMeanOfListens(spotifystatslist);
-        assertEquals(expResult, result);
+        assertEquals(expResult, result,"The arithmeticMeanOfListens expected value should be the same as result value ");
 
         //System.out.println("testArithmeticMeanOfListens ending process...");
     }
@@ -458,7 +457,7 @@ public class ModelStatisticsSpotifyTest {
         double expResult = -0.6232142857142857; 
         double result = instance.spearmanKorelation(spotifystatslist);
 
-        assertEquals(expResult, result, 0);
+        assertEquals(expResult, result, 0,"Expected Spearman Korelation value should be the same as the result value");
 
         //System.out.println("testSpearmanKorelation ending process...");
     }
@@ -510,7 +509,7 @@ public class ModelStatisticsSpotifyTest {
             Executable executable = () -> {
                 instance.generateReport(spotifystatslist,fl,region.name());
             };
-            assertThrows(IOException.class, executable);
+            assertThrows(IOException.class, executable,"assert should throw IOExpection");
         }
 
     }

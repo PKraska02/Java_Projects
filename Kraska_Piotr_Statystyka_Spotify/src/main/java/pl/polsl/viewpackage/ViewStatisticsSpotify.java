@@ -2,8 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package pl.polsl.View_package;
-import pl.polsl.Controller_package.ControllerStatisticsSpotify;
+package pl.polsl.viewpackage;
+import pl.polsl.controllerpackage.ControllerStatisticsSpotify;
 
 
 /**
@@ -236,8 +236,6 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
-        statisticsSpotifyName.getAccessibleContext().setAccessibleName("Statistics Spotify");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
     /**
@@ -326,7 +324,7 @@ public class ViewStatisticsSpotify extends javax.swing.JFrame {
     */
     private void showReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showReportButtonActionPerformed
         // TODO add your handling code here:
-        theController.show_Report();
+        theController.showReport();
         
     }//GEN-LAST:event_showReportButtonActionPerformed
 

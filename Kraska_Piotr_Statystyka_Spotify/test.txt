@@ -1,20 +1,82 @@
-Report from AS 
+Report from WorldWide
 
 Author/s with the most listens: 
-Author: Ed Sheeran  Number of listens: 5000000
+Author: Don Omar  Number of listens: 131500000
 
 Author/s with least listens: 
-Author: Gibbs Kielas  Number of listens: 2500
+Author: X Ambassadors  Number of listens: 4150000
 
 Song with most listens: 
-Author: Ed Sheeran  Number of listens: 5000000 Region: AS
+Author: Don Omar  Number of listens: 95000000 Region: NA
 
 Song with least listens: 
-Author: Gibbs Kielas  Number of listens: 2500 Region: AS
+Author: Gibbs Kielas  Number of listens: 1750 Region: AF
+Author/s with the most listens in EU: 
 
-Arithmetic mean of listens: 1413125
+Author: Don Omar  Number of listens: 35000000
+
+Author/s with least listens in EU: 
+Author: X Ambassadors  Number of listens: 1500000
+
+Song with most listens in EU: 
+Author: Don Omar  Number of listens: 35000000 Region: EU
+
+Song with least listens in EU: 
+Author: X Ambassadors  Number of listens: 1500000 Region: EU
+Author/s with the most listens in NA: 
+
+Author: Don Omar  Number of listens: 95000000
+
+Author/s with least listens in NA: 
+Author: Gibbs Kielas  Number of listens: 47000
+
+Song with most listens in NA: 
+Author: Don Omar  Number of listens: 95000000 Region: NA
+
+Song with least listens in NA: 
+Author: Gibbs Kielas  Number of listens: 47000 Region: NA
+Author/s with the most listens in AS: 
+
+Author: Ed Sheeran  Number of listens: 5000000
+
+Author/s with least listens in AS: 
+Author: Gibbs Kielas  Number of listens: 2500
+
+Song with most listens in AS: 
+Author: Ed Sheeran  Number of listens: 5000000 Region: AS
+
+Song with least listens in AS: 
+Author: Gibbs Kielas  Number of listens: 2500 Region: AS
+Author/s with the most listens in AF: 
+
+Author: Don Omar  Number of listens: 900000
+
+Author/s with least listens in AF: 
+Author: Gibbs Kielas  Number of listens: 1750
+
+Song with most listens in AF: 
+Author: Don Omar  Number of listens: 900000 Region: AF
+
+Song with least listens in AF: 
+Author: Gibbs Kielas  Number of listens: 1750 Region: AF
+
+Arithmetic mean of listens: 12237578
+Spearman's rank correlation coefficient: -0.48235294117647065
+
 Sorted list:
+Don Omar DanzaKuduro NA 95000000 3.27
+Don Omar DanzaKuduro EU 35000000 3.27
+Gibbs Kielas PieknySwiat EU 25000000 3.57
+Ed Sheeran ShapeOfYou EU 20000000 3.53
+Ed Sheeran ShapeOfYou NA 10000000 3.53
 Ed Sheeran ShapeOfYou AS 5000000 3.53
+X Ambassadors Renegades NA 2500000 3.13
+X Ambassadors Renegades EU 1500000 3.13
+Don Omar DanzaKuduro AF 900000 3.27
 Don Omar DanzaKuduro AS 600000 3.27
+Ed Sheeran ShapeOfYou AF 100000 3.53
+X Ambassadors Renegades AF 100000 3.13
 X Ambassadors Renegades AS 50000 3.13
+Gibbs Kielas PieknySwiat NA 47000 3.57
 Gibbs Kielas PieknySwiat AS 2500 3.57
+Gibbs Kielas PieknySwiat AF 1750 3.57

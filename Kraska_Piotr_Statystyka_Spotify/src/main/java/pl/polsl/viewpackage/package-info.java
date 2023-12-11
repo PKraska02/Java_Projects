@@ -7,4 +7,4 @@
  *
  * @since 1.0
  */
-package pl.polsl.View_package;
+package pl.polsl.viewpackage;

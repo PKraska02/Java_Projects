@@ -1,9 +1,9 @@
 package Main;
 
 
-import pl.polsl.Controller_package.ControllerStatisticsSpotify;
-import pl.polsl.Model_package.ModelStatisticsSpotify;
-import pl.polsl.View_package.ViewStatisticsSpotify;
+import pl.polsl.controllerpackage.ControllerStatisticsSpotify;
+import pl.polsl.modelpackage.ModelStatisticsSpotify;
+import pl.polsl.viewpackage.ViewStatisticsSpotify;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,7 +13,7 @@ import pl.polsl.View_package.ViewStatisticsSpotify;
  * This class represents the main entry point for the Spotify statistics application.
  *
  * @author Piotr
- * @version 2.0
+ * @version 3.0
  */
 public class StatystykiSpotify {
     /**
@@ -42,9 +42,9 @@ public class StatystykiSpotify {
       javax.swing.SwingUtilities.invokeLater(new Runnable() {
       @Override
       public void run() {
-        ModelStatisticsSpotify Spotify_Model = new ModelStatisticsSpotify();
-        ControllerStatisticsSpotify Spotify_Controller = new ControllerStatisticsSpotify();
-        ViewStatisticsSpotify Spotify_View = new ViewStatisticsSpotify(Spotify_Controller);
+        ModelStatisticsSpotify spotifyModel = new ModelStatisticsSpotify();
+        ControllerStatisticsSpotify spotifyController = new ControllerStatisticsSpotify();
+        ViewStatisticsSpotify spotifyView = new ViewStatisticsSpotify(spotifyController);
         }
         });
     }

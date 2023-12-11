@@ -1,4 +1,4 @@
-package pl.polsl.Model_package;
+package pl.polsl.modelpackage;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -6,35 +6,35 @@ package pl.polsl.Model_package;
  */
 
 /**
- *This class represents a pair of an Integer key and a Double value.
+ *This class represents a pair of a String key and a Double value.
  * @author Piotr
  * @version 1.0
  */
-public class IntegerDoublePair {
+public class StringDoublePair {
     /**
-     * The Integer key.
+     * The String type key
      */
-    private Integer key;
+    private String key;
     /**
-     * The Double value.
+     * The double type value
      */
     private Double value;
     /**
-     * Constructs a new IntegerDoublePair with the specified key and value.
+     * Constructs a new StringDoublePair with the specified key and value.
      *
-     * @param key   The Integer key.
+     * @param key   The String key.
      * @param value The Double value.
      */
-    public IntegerDoublePair(Integer key, Double value) {
+    public StringDoublePair(String key, Double value) {
         this.key = key;
         this.value = value;
     }
     /**
      * Gets the key of this pair.
      *
-     * @return The Integer key.
+     * @return The String key.
      */
-    public Integer getKey() {
+    public String getKey() {
         return key;
     }
     /**
