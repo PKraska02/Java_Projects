@@ -51,7 +51,20 @@
             </select>
             </form>
             <hr>
-        
+            <script>
+                        // Function to get the value of a cookie by name
+                        function getCookie(name) {
+                            const value = `; ${document.cookie}`;
+                            const parts = value.split(`; ${name}=`);
+                            if (parts.length === 2) return parts.pop().split(';').shift();
+                        }
+
+                        // Read the continent cookie and set the selected option
+                        const selectedContinent = getCookie('selectedContinent');
+                        if (selectedContinent) {
+                            document.getElementById('continentSelect').value = selectedContinent;
+                        }
+                    </script>
             <form action="ShowReportServlet" method="post">
             <label>Show Report:</label>
             <button type="submit" name="action" value="showReport">Show Report</button>
@@ -67,14 +80,6 @@
             <button type="submit" name="action" value="history">Show History</button>
             <hr>
             </form>
-            <!--
-            <script>
-                function disableComboBox() {
-                    // Disable the combobox after selection
-                    document.getElementById("continentSelect").disabled = true;
-                }
-            </script>
-            -->
     </div>
             <!-- Add the output element to display the result -->
             Result:

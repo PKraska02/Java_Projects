@@ -11,11 +11,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import pl.polsl.lab.Model_package.ModelStatisticsSpotify;
 /**
  *
  * @author Piotr
+ * @version 1.0
  */
 @WebServlet("/HistoryServlet")
 public class HistoryServlet extends HttpServlet {
@@ -27,13 +29,12 @@ public class HistoryServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<String> calculationHistory = this.model.getCalculationHistory();
-        request.setAttribute("calculationHistory", calculationHistory);
-        // Assuming you set the calculationHistory attribute before forwarding
-        System.out.println("Calculation History: " + calculationHistory);
+    List<String> calculationHistory = new ArrayList<>(); 
+    calculationHistory = this.model.getCalculationHistory();
+       request.setAttribute("calculationHistory", calculationHistory);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("calculationHistory.jsp");
-        dispatcher.forward(request, response);
+       RequestDispatcher dispatcher = request.getRequestDispatcher("calculationHistory.jsp");
+       dispatcher.forward(request, response);
     }
 }
 

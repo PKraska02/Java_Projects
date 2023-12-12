@@ -3,6 +3,7 @@ package pl.polsl.lab.servlets;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -22,9 +23,6 @@ import java.util.Map;
 public class StatisticsSpotifyServlet extends HttpServlet{
 
     private final ModelStatisticsSpotify model;
-    //private final HtmlViewStatisticsSpotify view;
-    //private final HtmlShowReport report;
-    //private final ShowDatabaseHtml database;
     private final String filePath = "C:/Users/Piotr/source/repos/Java_Projects/Kraska_Piotr_ex4prototyp/JavaServlets_new/generatedReport.txt";
     private final String filePath2 = "C:/Users/Piotr/source/repos/Java_Projects/Kraska_Piotr_Statystyka_Spotify/SpotifyStatsDatabase.txt";
     private String region = "";
@@ -38,12 +36,12 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    // Pobierz parametry z żądania
+
     String action = request.getParameter("action");
     String selectedContinent = request.getParameter("continent");
     region = selectedContinent;
-    //System.out.println("Selected Region: " + region);
-
+    Cookie continentCookie = new Cookie("selectedContinent", region);
+        response.addCookie(continentCookie);
 
         if (action != null) {
             String result = "";
@@ -78,7 +76,6 @@ public class StatisticsSpotifyServlet extends HttpServlet{
 }
 
     public void generateReportAction() {
-        //System.out.println("IF IN 0.");
         try {
             List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
             List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
@@ -93,27 +90,19 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     public String showMostPopular() {
         List<Map.Entry<String, Integer>> mpArtist = null;
         StringBuilder result = new StringBuilder();
-            //System.out.println("IF IN 1.");
         try {
-            //System.out.println("Before reading file.");
             List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
-            //System.out.println("After reading file. Temp size: " + temp.size());
-
-            //System.out.println("Before setting Spotify stats.");
             List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
-            //System.out.println("After setting Spotify stats. Temp2 size: " + temp2.size());
 
             mpArtist = this.model.mostPopularArtist(temp2);
             for (Map.Entry<String, Integer> entry : mpArtist) {
                 result.append("Author: ").append(entry.getKey()).append("  Number of listens: ").append(entry.getValue()).append("\n");
-                //System.out.println("The result"+result);
             }
         } catch (FileNotFoundException e) {
             //System.out.println(e);
         } catch (IOException ex) {
             //System.out.println(ex);
         }
-        //System.out.println(result.toString());
         return result.toString();
     }
 
@@ -122,14 +111,8 @@ public class StatisticsSpotifyServlet extends HttpServlet{
         StringBuilder result = new StringBuilder();
 
         try {
-            //System.out.println("Before reading file.");
             List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
-            //System.out.println("After reading file. Temp size: " + temp.size());
-
-            //System.out.println("Before setting Spotify stats.");
             List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
-            //System.out.println("After setting Spotify stats. Temp2 size: " + temp2.size());
-
             lpArtist = this.model.leastPopularArtist(temp2);
             for (Map.Entry<String, Integer> entry : lpArtist) {
                 result.append("Author: ").append(entry.getKey()).append("  Number of listens: ").append(entry.getValue()).append("\n");
@@ -145,7 +128,6 @@ public class StatisticsSpotifyServlet extends HttpServlet{
 
     public void setRegion(String s) {
         this.region = s;
-        //this.isRegionCheck = true;
     }
 
     public String showMostSong() {
@@ -166,7 +148,6 @@ public class StatisticsSpotifyServlet extends HttpServlet{
         } catch (IOException ex) {
             //System.out.println(ex);
         }
-        //System.out.println(result);
         return result.toString();
     }
 
@@ -182,14 +163,12 @@ public class StatisticsSpotifyServlet extends HttpServlet{
                 result.append("Author: ").append(entry.getAuthorName()).append(entry.getAuthorLastName())
                         .append("  Number of Listens: ").append(entry.getPlaysCount())
                         .append("\n");
-                //System.out.println(result);
             }
         } catch (FileNotFoundException e) {
             //System.out.println(e);
         } catch (IOException ex) {
             //System.out.println(ex);
         }
-        //System.out.println(result);
         return result.toString();
     }
 
@@ -209,22 +188,17 @@ public class StatisticsSpotifyServlet extends HttpServlet{
         } catch (IOException ex) {
             return "Error: " + ex.getMessage();
         }
-}
+    }
 
-
-    // Dodaj metodę do przekazywania informacji do widoku
     private void updateViewWithResult(String result,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (result == null) {
         result = "Error: Result is null.";
         }
         request.setAttribute("result", result);
-        //System.out.println("Before forwarding to JSP");
         RequestDispatcher dispatcher = request.getRequestDispatcher("showData.jsp");
         dispatcher.forward(request, response);
-        //System.out.println("After forwarding to JSP");
     }
     
-
 }
 
 
