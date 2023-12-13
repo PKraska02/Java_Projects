@@ -40,31 +40,54 @@
             <label>Spearman Correlation:</label>
             <button type="submit" name="action" value="spearmanCorrelation">Spearman Correlation</button>
             <hr>
-                        <!-- Add the combobox here -->
+            
             <label>Select Continent:</label>
-            <select name="continent" id="continentSelect" onchange="disableComboBox()">
-                <option value="EU">EU</option>
-                <option value="NA">NA</option>
-                <option value="AF">AF</option>
-                <option value="AS">AS</option>
-                <option value="WorldWide">WorldWide</option>
+            <select name="continent" id="continentSelect" onchange="handleContinentChange()">
+                <option value="EU" ${"EU" eq selectedContinent ? 'selected' : ''}>EU</option>
+                <option value="NA" ${"NA" eq selectedContinent ? 'selected' : ''}>NA</option>
+                <option value="AF" ${"AF" eq selectedContinent ? 'selected' : ''}>AF</option>
+                <option value="AS" ${"AS" eq selectedContinent ? 'selected' : ''}>AS</option>
+                <option value="WorldWide" ${"WorldWide" eq selectedContinent ? 'selected' : ''}>WorldWide</option>
             </select>
+            <input type="hidden" id="selectedContinent" name="selectedContinent" value="${selectedContinent}">
+
+            <script>
+                // Function to set a cookie
+                function setCookie(name, value, days) {
+                    const expires = new Date();
+                    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+                    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+                }
+
+                // Function to get the value of a cookie by name
+                function getCookie(name) {
+                    const value = `; ${document.cookie}`;
+                    const parts = value.split(`; ${name}=`);
+                    if (parts.length === 2) return parts.pop().split(';').shift();
+                }
+
+                // Function to handle the continent selection change
+                function handleContinentChange() {
+                    const selectedContinent = document.getElementById('continentSelect').value;
+                    setCookie('selectedContinent', selectedContinent, 7); // Set the cookie to expire in 7 days
+
+                    // Update the hidden input field value
+                    document.getElementById('selectedContinent').value = selectedContinent;
+                }
+
+                // Read the continent cookie and set the selected option
+                const selectedContinent = getCookie('selectedContinent');
+                if (selectedContinent) {
+                    document.getElementById('continentSelect').value = selectedContinent;
+
+                    // Update the hidden input field value
+                    document.getElementById('selectedContinent').value = selectedContinent;
+                }
+            </script>
+
+            
             </form>
             <hr>
-            <script>
-                        // Function to get the value of a cookie by name
-                        function getCookie(name) {
-                            const value = `; ${document.cookie}`;
-                            const parts = value.split(`; ${name}=`);
-                            if (parts.length === 2) return parts.pop().split(';').shift();
-                        }
-
-                        // Read the continent cookie and set the selected option
-                        const selectedContinent = getCookie('selectedContinent');
-                        if (selectedContinent) {
-                            document.getElementById('continentSelect').value = selectedContinent;
-                        }
-                    </script>
             <form action="ShowReportServlet" method="post">
             <label>Show Report:</label>
             <button type="submit" name="action" value="showReport">Show Report</button>

@@ -40,15 +40,25 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     String action = request.getParameter("action");
     String selectedContinent = request.getParameter("continent");
     region = selectedContinent;
-    Cookie continentCookie = new Cookie("selectedContinent", region);
-        response.addCookie(continentCookie);
-
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if ("selectedContinent".equals(cookie.getName())) {
+                selectedContinent = cookie.getValue();
+                break;
+            }
+        }
+    }
+       // If the cookie doesn't exist, use the value from request parameters
+    if (selectedContinent == null) {
+        selectedContinent = request.getParameter("continent");
+    }
         if (action != null) {
             String result = "";
             switch (action) {
                 case "generateReport":
                     generateReportAction();
-                    result = "Report generated successfully";  // Set a success message
+                    result = "Report generated successfully"; 
                     break;
                 case "showMostPopularArtist":
                     result = showMostPopular();
@@ -69,11 +79,13 @@ public class StatisticsSpotifyServlet extends HttpServlet{
                 default:
                     break;
             }
+        setContinentCookie(selectedContinent, response);
         model.addToCalculationHistory("Action: " + action + ", Result: " + result);
         updateViewWithResult(result, request, response);
     }
-    response.getWriter().close();
+    //response.getWriter().close();
 }
+    
 
     public void generateReportAction() {
         try {
@@ -197,6 +209,12 @@ public class StatisticsSpotifyServlet extends HttpServlet{
         request.setAttribute("result", result);
         RequestDispatcher dispatcher = request.getRequestDispatcher("showData.jsp");
         dispatcher.forward(request, response);
+    }
+    
+    private void setContinentCookie(String selectedContinent, HttpServletResponse response) {
+        Cookie continentCookie = new Cookie("selectedContinent", selectedContinent);
+        continentCookie.setMaxAge(60 * 60); 
+        response.addCookie(continentCookie);
     }
     
 }
