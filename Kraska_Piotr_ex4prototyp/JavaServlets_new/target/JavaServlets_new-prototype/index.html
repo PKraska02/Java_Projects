@@ -7,19 +7,22 @@
 <body>
     <div class="menu">
         <h2>Statistics Spotify</h2>
-        <form id="statisticsForm" action="StatisticsSpotifyServlet" method="post" onsubmit="setCookie()">
+        <form id="statisticsForm" action="StatisticsSpotifyServlet" method="post">
             <label>Generate Report:</label>
             <button type="submit" name="action" value="generateReport">Generate Report</button>
             <hr>
             <label>Select Continent:</label>
             <select name="continent" id="continentSelect">
+                <option value="">Select...</option>
                 <option value="EU">EU</option>
                 <option value="NA">NA</option>
                 <option value="AF">AF</option>
                 <option value="AS">AS</option>
                 <option value="WorldWide">WorldWide</option>
             </select>
-        </form>
+            </form>
+
+
         <hr>
         <form action="ShowDatabaseServlet" method="post">
             <label>Show Details About Data:</label>

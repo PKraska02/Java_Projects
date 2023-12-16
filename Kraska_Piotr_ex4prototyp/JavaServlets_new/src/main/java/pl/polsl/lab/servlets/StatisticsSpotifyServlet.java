@@ -38,21 +38,13 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     String action = request.getParameter("action");
-    String selectedContinent = request.getParameter("continent");
-    region = selectedContinent;
-    Cookie[] cookies = request.getCookies();
-    if (cookies != null) {
-        for (Cookie cookie : cookies) {
-            if ("selectedContinent".equals(cookie.getName())) {
-                selectedContinent = cookie.getValue();
-                break;
-            }
-        }
-    }
-       // If the cookie doesn't exist, use the value from request parameters
-    if (selectedContinent == null) {
-        selectedContinent = request.getParameter("continent");
-    }
+    String regionFromCombobox = request.getParameter("continent"); // Get value from combobox
+    String regionFromCookies = getRegionFromCookie(request); // Get value from cookies
+
+    // Use the combobox value if it's set, otherwise use the value from cookies
+    region = (regionFromCombobox != null && !regionFromCombobox.isEmpty()) ? regionFromCombobox : regionFromCookies;
+
+    setCookieRegion(region, response);
         if (action != null) {
             String result = "";
             switch (action) {
@@ -79,7 +71,7 @@ public class StatisticsSpotifyServlet extends HttpServlet{
                 default:
                     break;
             }
-        setContinentCookie(selectedContinent, response);
+        //setContinentCookie(selectedContinent, response);
         model.addToCalculationHistory("Action: " + action + ", Result: " + result);
         updateViewWithResult(result, request, response);
     }
@@ -209,13 +201,27 @@ public class StatisticsSpotifyServlet extends HttpServlet{
         request.setAttribute("result", result);
         RequestDispatcher dispatcher = request.getRequestDispatcher("showData.jsp");
         dispatcher.forward(request, response);
+        return;
     }
     
-    private void setContinentCookie(String selectedContinent, HttpServletResponse response) {
-        Cookie continentCookie = new Cookie("selectedContinent", selectedContinent);
-        continentCookie.setMaxAge(60 * 60); 
-        response.addCookie(continentCookie);
+    private void setCookieRegion(String regionLocal, HttpServletResponse response) {
+        Cookie regionCookie = new Cookie("Region",regionLocal);
+        regionCookie.setMaxAge(60 * 60); 
+        response.addCookie(regionCookie);
+        return;
     }
+    private String getRegionFromCookie(HttpServletRequest request) {
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if ("Region".equals(cookie.getName())) {
+                return cookie.getValue();
+            }
+        }
+    }
+    return null; // If the "Region" cookie is not found
+}
+
     
 }
 
