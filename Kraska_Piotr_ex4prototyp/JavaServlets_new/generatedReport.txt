@@ -1,0 +1,20 @@
+Report from NA
+
+Author/s with the most listens: 
+Author: Don Omar  Number of listens: 95000000
+
+Author/s with least listens: 
+Author: Gibbs Kielas  Number of listens: 47000
+
+Song with most listens: 
+Author: Don Omar  Number of listens: 95000000 Region: NA
+
+Song with least listens: 
+Author: Gibbs Kielas  Number of listens: 47000 Region: NA
+
+Arithmetic mean of listens: 26886750
+Sorted list:
+Don Omar DanzaKuduro NA 95000000 3.27
+Ed Sheeran ShapeOfYou NA 10000000 3.53
+X Ambassadors Renegades NA 2500000 3.13
+Gibbs Kielas PieknySwiat NA 47000 3.57
