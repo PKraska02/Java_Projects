@@ -43,11 +43,12 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("loginStatus", "Login successful!");
                 HttpSession session = request.getSession();
                 session.setAttribute("user", login);
-                request.getRequestDispatcher("/loginStatus.jsp").forward(request, response);
+                request.getRequestDispatcher("loginStatus.jsp").forward(request, response);
             } else {
                 request.setAttribute("loginStatus", "Login failed. Please check your credentials.");
-                request.getRequestDispatcher("/loginStatus.jsp").forward(request, response);
+                request.getRequestDispatcher("loginStatus.jsp").forward(request, response);
             }
         }
+ 
     }
 }

@@ -19,9 +19,19 @@
         <p>${loginStatus}</p>
     </c:if>
     <br>
+    <form action="insertArtist.jsp" method="post">
+        <button type="submit">Insert Artist</button>
+    </form>
+    <br>
+    <form action="insertSong.jsp" method="post">
+        <button type="submit">Insert Song</button>
+    </form>
+    <br>
     <form action="javascript:history.go(-1)">
         <button type="submit">Back</button>
     </form>
+
 </body>
 </html>
+
 

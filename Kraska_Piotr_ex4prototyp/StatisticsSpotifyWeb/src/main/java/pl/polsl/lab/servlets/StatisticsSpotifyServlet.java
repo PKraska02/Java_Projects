@@ -12,18 +12,21 @@ import pl.polsl.lab.Modelpackage.ModelStatisticsSpotify;
 import java.io.IOException;
 import java.util.List;
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.Map;
+import pl.polsl.lab.Modelpackage.DatabaseManager;
 
 /**
  * StatisticsSpotifyServlet class is responsible for controlling the flow of data
  * and interactions between the ModelStatisticsSpotify and index.html website .
  * @author Piotr
- * @version 3.0
+ * @version 5.0
  */
 @WebServlet("/StatisticsSpotifyServlet")
 public class StatisticsSpotifyServlet extends HttpServlet{
 
     private final ModelStatisticsSpotify model;
+    private final DatabaseManager db;
     private final String filePath = "C:/Users/Piotr/source/repos/Java_Projects/Kraska_Piotr_ex4prototyp/JavaServlets_new/generatedReport.txt";
     private final String filePath2 = "C:/Users/Piotr/source/repos/Java_Projects/Kraska_Piotr_Statystyka_Spotify/SpotifyStatsDatabase.txt";
     private String region = "";
@@ -36,11 +39,15 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     private ModelStatisticsSpotify getModelInstance() {
         return ModelStatisticsSpotify.getInstance();
     }
+    private DatabaseManager getDBInstance(){
+        return DatabaseManager.getInstance();
+    }
     /**
      * Constructor
      */
     public StatisticsSpotifyServlet() {
         this.model = getModelInstance();
+        this.db = getDBInstance();
 
     }
     /**
@@ -111,15 +118,18 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     * @throws FileNotFoundException If the input file is not found.
     * @throws IOException           If an IO error occurs during the process.
     */
-    public void generateReportAction() {
+    public void generateReportAction(){
         try {
-            List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
+            //List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
+            List<ModelStatisticsSpotify> temp = this.db.getAllStatistics();
             List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
             this.model.generateReport(temp2, filePath, region);
         } catch (FileNotFoundException e) {
             //System.out.println(e);
         } catch (IOException ex) {
             //System.out.println(ex);
+        } catch (SQLException ex){
+            
         }
     }
     /**
@@ -131,18 +141,16 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     public String showMostPopular() {
         List<Map.Entry<String, Integer>> mpArtist = null;
         StringBuilder result = new StringBuilder();
-        try {
-            List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
+        try{
+            List<ModelStatisticsSpotify> temp = this.db.getAllStatistics();
             List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
 
             mpArtist = this.model.mostPopularArtist(temp2);
             for (Map.Entry<String, Integer> entry : mpArtist) {
                 result.append("Author: ").append(entry.getKey()).append("  Number of listens: ").append(entry.getValue()).append("\n");
             }
-        } catch (FileNotFoundException e) {
-            //System.out.println(e);
-        } catch (IOException ex) {
-            //System.out.println(ex);
+        }catch (SQLException ex){
+            
         }
         return result.toString();
     }
@@ -155,20 +163,16 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     public String showLeastPopular() {
         List<Map.Entry<String, Integer>> lpArtist = null;
         StringBuilder result = new StringBuilder();
-
-        try {
-            List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
+        try{
+            List<ModelStatisticsSpotify> temp = this.db.getAllStatistics();
             List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
             lpArtist = this.model.leastPopularArtist(temp2);
             for (Map.Entry<String, Integer> entry : lpArtist) {
                 result.append("Author: ").append(entry.getKey()).append("  Number of listens: ").append(entry.getValue()).append("\n");
             }
-        } catch (FileNotFoundException e) {
-            //System.out.println(e);
-        } catch (IOException ex) {
-            //System.out.println(ex);
+        }catch (SQLException ex){
+            
         }
-        //System.out.println(result);
         return result.toString();
     }
     /**
@@ -188,9 +192,8 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     public String showMostSong() {
         List<ModelStatisticsSpotify> mpSong = null;
         StringBuilder result = new StringBuilder();
-
-        try {
-            List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
+        try{
+            List<ModelStatisticsSpotify> temp = this.db.getAllStatistics();
             List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
             mpSong = this.model.mostPopularSong(temp2);
             for (ModelStatisticsSpotify entry : mpSong) {
@@ -198,10 +201,8 @@ public class StatisticsSpotifyServlet extends HttpServlet{
                         .append("  Number of Listens: ").append(entry.getPlaysCount())
                         .append("\n");
             }
-        } catch (FileNotFoundException e) {
-            //System.out.println(e);
-        } catch (IOException ex) {
-            //System.out.println(ex);
+        }catch (SQLException ex){
+            
         }
         return result.toString();
     }
@@ -215,9 +216,8 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     public String showLeastSong() {
         List<ModelStatisticsSpotify> lpArtist = null;
         StringBuilder result = new StringBuilder();
-
-        try {
-            List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
+            try{
+            List<ModelStatisticsSpotify> temp = this.db.getAllStatistics();
             List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
             lpArtist = this.model.leastPopularSong(temp2);
             for (ModelStatisticsSpotify entry : lpArtist) {
@@ -225,10 +225,8 @@ public class StatisticsSpotifyServlet extends HttpServlet{
                         .append("  Number of Listens: ").append(entry.getPlaysCount())
                         .append("\n");
             }
-        } catch (FileNotFoundException e) {
-            //System.out.println(e);
-        } catch (IOException ex) {
-            //System.out.println(ex);
+            }catch (SQLException ex){
+            
         }
         return result.toString();
     }
@@ -240,9 +238,10 @@ public class StatisticsSpotifyServlet extends HttpServlet{
     *         If an error occurs, an error message is returned.
     */
     public String showSpearmanKorelation() {
-        try {
-            List<ModelStatisticsSpotify> temp = this.model.readFile(filePath2);
+        try{
+            List<ModelStatisticsSpotify> temp = this.db.getAllStatistics();
             List<ModelStatisticsSpotify> temp2 = this.model.setStatSpotify(region, temp);
+        
             double result = this.model.spearmanKorelation(temp2);
 
             if (Double.isNaN(result)) {
@@ -250,11 +249,11 @@ public class StatisticsSpotifyServlet extends HttpServlet{
             } else {
                 return "Spearman correlation: " + result;
             }
-        } catch (FileNotFoundException e) {
-            return "Error: File not found.";
-        } catch (IOException ex) {
-            return "Error: " + ex.getMessage();
+        }catch (SQLException ex){
+            
         }
+        return null;
+
     }
     /**
      * Updates the view with the result and forwards the request to the showData.jsp page.
@@ -287,16 +286,16 @@ public class StatisticsSpotifyServlet extends HttpServlet{
         return;
     }
     private String getRegionFromCookie(HttpServletRequest request) {
-    Cookie[] cookies = request.getCookies();
-    if (cookies != null) {
-        for (Cookie cookie : cookies) {
-            if ("Region".equals(cookie.getName())) {
-                return cookie.getValue();
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("Region".equals(cookie.getName())) {
+                    return cookie.getValue();
+                }
             }
         }
+        return null; // If the "Region" cookie is not found
     }
-    return null; // If the "Region" cookie is not found
-}
 
     
 }

@@ -13,6 +13,11 @@ import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Collections;
@@ -22,7 +27,7 @@ import java.util.Comparator;
  * This class represents the data model for Spotify statistics.
  * It contains methods to read and process statistics data.
  * @author Piotr
- * @version 3.0
+ * @version 4.0
  */
 public class ModelStatisticsSpotify {
     /**
@@ -60,7 +65,10 @@ public class ModelStatisticsSpotify {
     * Create static instance of the ModelStatisticsSpotify object
     */
     private static ModelStatisticsSpotify instance;
-
+    DatabaseManager databaseManager = DatabaseManager.getInstance();
+    String jdbcUrl = databaseManager.getJdbcUrl();
+    String jdbcUser = databaseManager.getJdbcUser();
+    String jdbcPassword = databaseManager.getJdbcPassword();
     /**
     * Static method to get the singleton instance
     * method must be static for correct program working
@@ -80,7 +88,9 @@ public class ModelStatisticsSpotify {
     * @param filePath The path to the file from which data will be read.
     * @return A List of Spotify statistics (ModelStatisticsSpotify).
     * @throws FileNotFoundException If the specified file is not found.
+    * @deprecated This method is deprecated and will be removed in future versions.
     */
+    @Deprecated
     public List<ModelStatisticsSpotify> readFile(String filePath) throws FileNotFoundException {
         List<ModelStatisticsSpotify> spotifyStatsList = new ArrayList<>();
 
@@ -109,6 +119,8 @@ public class ModelStatisticsSpotify {
 
         return spotifyStatsList;
     }
+    
+    
     /**
      * Saves data to a specified file path.
      *

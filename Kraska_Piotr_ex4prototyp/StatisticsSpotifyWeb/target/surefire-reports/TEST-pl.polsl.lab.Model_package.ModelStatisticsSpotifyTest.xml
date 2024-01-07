@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.246" tests="15" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.397" tests="15" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="netbeans.deploy" value="true"/>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1250"/>
@@ -9,7 +8,6 @@
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
-    <property name="exec.appArgs" value=""/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
     <property name="user.timezone" value="Europe/Warsaw"/>
     <property name="os.name" value="Windows 11"/>
@@ -17,9 +15,8 @@
     <property name="user.country" value="PL"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\Piotr\AppData\Local\Temp\surefire9335133467424448576\surefirebooter-20231218152806158_3.jar C:\Users\Piotr\AppData\Local\Temp\surefire9335133467424448576 2023-12-18T15-28-05_955-jvmRun1 surefire-20231218152806158_1tmp surefire_0-20231218152806158_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Piotr\AppData\Local\Temp\surefire15639954018902483242\surefirebooter-20240107200536742_3.jar C:\Users\Piotr\AppData\Local\Temp\surefire15639954018902483242 2024-01-07T20-05-36_528-jvmRun1 surefire-20240107200536742_1tmp surefire_0-20240107200536742_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="exec.vmArgs" value=""/>
     <property name="surefire.test.class.path" value="C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_ex4prototyp\StatisticsSpotifyWeb\target\test-classes;C:\Users\Piotr\source\repos\Java_Projects\Kraska_Piotr_ex4prototyp\StatisticsSpotifyWeb\target\classes;C:\Users\Piotr\.m2\repository\org\apache\derbyclient\derbyclient\10.14.2.0\derbyclient-10.14.2.0.jar;C:\Users\Piotr\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.core\2.7.10\org.eclipse.persistence.core-2.7.10.jar;C:\Users\Piotr\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.asm\9.2.0\org.eclipse.persistence.asm-9.2.0.jar;C:\Users\Piotr\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.antlr\2.7.10\org.eclipse.persistence.antlr-2.7.10.jar;C:\Users\Piotr\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa\2.7.10\org.eclipse.persistence.jpa-2.7.10.jar;C:\Users\Piotr\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa.jpql\2.7.10\org.eclipse.persistence.jpa.jpql-2.7.10.jar;C:\Users\Piotr\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.moxy\2.7.10\org.eclipse.persistence.moxy-2.7.10.jar;C:\Users\Piotr\.m2\repository\org\eclipse\persistence\jakarta.persistence\2.2.3\jakarta.persistence-2.2.3.jar;C:\Users\Piotr\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa.modelgen.processor\2.7.10\org.eclipse.persistence.jpa.modelgen.processor-2.7.10.jar;C:\Users\Piotr\.m2\repository\jakarta\platform\jakarta.jakartaee-api\10.0.0\jakarta.jakartaee-api-10.0.0.jar;C:\Users\Piotr\.m2\repository\jakarta\platform\jakarta.jakartaee-web-api\10.0.0\jakarta.jakartaee-web-api-10.0.0.jar;C:\Users\Piotr\.m2\repository\jakarta\servlet\jsp\jakarta.servlet.jsp-api\3.1.0\jakarta.servlet.jsp-api-3.1.0.jar;C:\Users\Piotr\.m2\repository\jakarta\el\jakarta.el-api\5.0.1\jakarta.el-api-5.0.1.jar;C:\Users\Piotr\.m2\repository\jakarta\servlet\jsp\jstl\jakarta.servlet.jsp.jstl-api\3.0.0\jakarta.servlet.jsp.jstl-api-3.0.0.jar;C:\Users\Piotr\.m2\repository\jakarta\faces\jakarta.faces-api\4.0.1\jakarta.faces-api-4.0.1.jar;C:\Users\Piotr\.m2\repository\jakarta\ws\rs\jakarta.ws.rs-api\3.1.0\jakarta.ws.rs-api-3.1.0.jar;C:\Users\Piotr\.m2\repository\jakarta\websocket\jakarta.websocket-api\2.1.0\jakarta.websocket-api-2.1.0.jar;C:\Users\Piotr\.m2\repository\jakarta\websocket\jakarta.websocket-client-api\2.1.0\jakarta.websocket-client-api-2.1.0.jar;C:\Users\Piotr\.m2\repository\jakarta\json\jakarta.json-api\2.1.0\jakarta.json-api-2.1.0.jar;C:\Users\Piotr\.m2\repository\jakarta\json\bind\jakarta.json.bind-api\3.0.0\jakarta.json.bind-api-3.0.0.jar;C:\Users\Piotr\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\Piotr\.m2\repository\jakarta\ejb\jakarta.ejb-api\4.0.1\jakarta.ejb-api-4.0.1.jar;C:\Users\Piotr\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\Piotr\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\Piotr\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\Piotr\.m2\repository\jakarta\interceptor\jakarta.interceptor-api\2.1.0\jakarta.interceptor-api-2.1.0.jar;C:\Users\Piotr\.m2\repository\jakarta\enterprise\jakarta.enterprise.cdi-api\4.0.1\jakarta.enterprise.cdi-api-4.0.1.jar;C:\Users\Piotr\.m2\repository\jakarta\enterprise\jakarta.enterprise.lang-model\4.0.1\jakarta.enterprise.lang-model-4.0.1.jar;C:\Users\Piotr\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\Piotr\.m2\repository\jakarta\authentication\jakarta.authentication-api\3.0.0\jakarta.authentication-api-3.0.0.jar;C:\Users\Piotr\.m2\repository\jakarta\security\enterprise\jakarta.security.enterprise-api\3.0.0\jakarta.security.enterprise-api-3.0.0.jar;C:\Users\Piotr\.m2\repository\jakarta\jms\jakarta.jms-api\3.1.0\jakarta.jms-api-3.1.0.jar;C:\Users\Piotr\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.0\jakarta.activation-api-2.1.0.jar;C:\Users\Piotr\.m2\repository\jakarta\mail\jakarta.mail-api\2.1.0\jakarta.mail-api-2.1.0.jar;C:\Users\Piotr\.m2\repository\jakarta\resource\jakarta.resource-api\2.1.0\jakarta.resource-api-2.1.0.jar;C:\Users\Piotr\.m2\repository\jakarta\authorization\jakarta.authorization-api\2.1.0\jakarta.authorization-api-2.1.0.jar;C:\Users\Piotr\.m2\repository\jakarta\batch\jakarta.batch-api\2.1.1\jakarta.batch-api-2.1.1.jar;C:\Users\Piotr\.m2\repository\jakarta\servlet\jakarta.servlet-api\6.1.0-M1\jakarta.servlet-api-6.1.0-M1.jar;C:\Users\Piotr\.m2\repository\javax\servlet\jstl\1.2\jstl-1.2.jar;C:\Users\Piotr\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.1\junit-jupiter-api-5.10.1.jar;C:\Users\Piotr\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Piotr\.m2\repository\org\junit\platform\junit-platform-commons\1.10.1\junit-platform-commons-1.10.1.jar;C:\Users\Piotr\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Piotr\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.1\junit-jupiter-params-5.10.1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Piotr"/>
@@ -33,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Piotr\AppData\Local\Temp\surefire9335133467424448576\surefirebooter-20231218152806158_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Piotr\AppData\Local\Temp\surefire15639954018902483242\surefirebooter-20240107200536742_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.8+9-LTS-211"/>
@@ -60,19 +57,19 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testMostPopularSong(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.08"/>
-  <testcase name="testSaveDataToFile(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.014"/>
-  <testcase name="testSetStatSpotify(String, String, String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.001"/>
+  <testcase name="testMostPopularSong(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.203"/>
+  <testcase name="testSaveDataToFile(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.016"/>
+  <testcase name="testSetStatSpotify(String, String, String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.002"/>
   <testcase name="testSetStatSpotify(String, String, String)[2]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.001"/>
-  <testcase name="testSetStatSpotify(String, String, String)[3]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.001"/>
+  <testcase name="testSetStatSpotify(String, String, String)[3]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.002"/>
   <testcase name="testMostPopularArtist(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.005"/>
-  <testcase name="testReadFile(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.011"/>
-  <testcase name="testReadFile(String)[2]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.004"/>
-  <testcase name="testReadFile(String)[3]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.002"/>
+  <testcase name="testReadFile(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.014"/>
+  <testcase name="testReadFile(String)[2]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.005"/>
+  <testcase name="testReadFile(String)[3]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.003"/>
   <testcase name="testSpearmanKorelation(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.003"/>
-  <testcase name="testLeastPopularArtist(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.002"/>
+  <testcase name="testLeastPopularArtist(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.001"/>
   <testcase name="testArtistSorter(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.002"/>
-  <testcase name="testGenerateReport(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.005"/>
+  <testcase name="testGenerateReport(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.004"/>
   <testcase name="testArithmeticMeanOfListens(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.001"/>
   <testcase name="testLeastPopularSong(String)[1]" classname="pl.polsl.lab.Model_package.ModelStatisticsSpotifyTest" time="0.001"/>
 </testsuite>

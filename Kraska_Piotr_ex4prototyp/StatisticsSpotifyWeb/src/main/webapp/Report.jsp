@@ -22,7 +22,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 </head>
 <body>
     <h2>File Data:</h2>
-    <textarea id="fileData" rows="30" cols="50">${result}</textarea>
+    <textarea id="fileData" rows="30" cols="95">${result}</textarea>
     
 
     <form action="ShowReportServlet" method="post">

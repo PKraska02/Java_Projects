@@ -58,10 +58,7 @@
                 <option value="AS">AS</option>
                 <option value="WorldWide">WorldWide</option>
             </select>
-            
-            <!-- Cookies section -->
-
-            <!-- Cookies section -->
+            <p>After the first set, your choice is saved in cookies until you select another region.</p>
 
           <!-- Combobox section -->
           </form>

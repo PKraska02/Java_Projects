@@ -1,20 +1,21 @@
-Report from NA
+Report from EU
 
 Author/s with the most listens: 
-Author: Don Omar  Number of listens: 95000000
+Author: Don Omar  Number of listens: 35000000
 
 Author/s with least listens: 
-Author: Gibbs Kielas  Number of listens: 47000
+Author: Piotr Kraska  Number of listens: 216937
 
 Song with most listens: 
-Author: Don Omar  Number of listens: 95000000 Region: NA
+Author: Don Omar  Number of listens: 35000000 Region: EU
 
 Song with least listens: 
-Author: Gibbs Kielas  Number of listens: 47000 Region: NA
+Author: Piotr Kraska  Number of listens: 216937 Region: EU
 
-Arithmetic mean of listens: 26886750
+Arithmetic mean of listens: 16343387
 Sorted list:
-Don Omar DanzaKuduro NA 95000000 3.27
-Ed Sheeran ShapeOfYou NA 10000000 3.53
-X Ambassadors Renegades NA 2500000 3.13
-Gibbs Kielas PieknySwiat NA 47000 3.57
+Don Omar DanzaKuduro EU 35000000 3.27
+Gibbs Kielas PieknySwiat EU 25000000 3.57
+Ed Sheeran ShapeOfYou EU 20000000 3.53
+X Ambassadors Renegades EU 1500000 3.13
+Piotr Kraska Javowe Opowiesci EU 216937 4.2
